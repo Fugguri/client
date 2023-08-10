@@ -344,10 +344,10 @@ const ChessGameWrapper = (props) => {
                     </h1>
                     <textarea
                         // style={{ marginTop: "30" + "px", width: "580px", height: "30px" }}
-                        onFocus={(event) => {
-                            console.log('sd')
-                            event.target.select()
-                        }}
+                        // onFocus={(event) => {
+                        //     console.log('sd')
+                        //     event.target.select()
+                        // }}
                         value={domainName + "/game/" + gameid}
                         type="text">
                     </textarea>
