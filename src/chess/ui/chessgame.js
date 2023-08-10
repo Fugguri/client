@@ -343,7 +343,7 @@ const ChessGameWrapper = (props) => {
                         below to send to your friend:
                     </h1>
                     <textarea
-                        style={{ marginTop: "30" + "px", width: "580px", height: "30px" }}
+                        // style={{ marginTop: "30" + "px", width: "580px", height: "30px" }}
                         onFocus={(event) => {
                             console.log('sd')
                             event.target.select()
