@@ -13,7 +13,7 @@ class CreateNewGame extends React.Component {
 
 
     state = {
-        didGetUserName: false,
+        didGetUserName: true,
         inputText: "",
         gameId: "",
         didGetColor: false,
@@ -26,23 +26,16 @@ class CreateNewGame extends React.Component {
     }
 
     send = () => {
-        /**
-         * This method should create a new room in the '/' namespace
-         * with a unique identifier. 
-         */
+
         const newGameRoomId = this.props.gameId
         const userName = this.props.userName
-        // set the state of this component with the gameId so that we can
-        // redirect the user to that URL later. 
-        this.setState({
-            inputText: userName,
-            gameId: newGameRoomId
-        })
 
         this.setState({
+            inputText: userName,
+            gameId: newGameRoomId,
             didGetUserName: true
         })
-        this.props.setUserName(this.state.userName)
+
 
         this.props.didRedirect()
         // emit an event to the server to create a new room 
@@ -68,7 +61,6 @@ class CreateNewGame extends React.Component {
 
     render() {
         // !!! TODO: edit this later once you have bought your own domain. 
-        console.log('создание')
 
         return (<React.Fragment>
             {this.state.didGetColor ?
@@ -87,11 +79,12 @@ class CreateNewGame extends React.Component {
                         style={{ marginLeft: String((window.innerWidth / 2) - 60) + "px", width: "120px", marginTop: "62px" }}
                         disabled={!(this.state.color.length > 0)}
                         onClick={() => {
-                            // When the 'Submit' button gets pressed from the username screen,
-                            // We should send a request to the server to create a new room with
-                            // the uuid we generate here.
+
                             this.props.didRedirect()
-                            // this.props.setUserName(this.state.userName)
+
+                            // this.props.setColor(this.state.color)
+                            this.props.setUserName(this.state.userName)
+
                             this.setState({
                                 didGetColor: true
                             })
@@ -107,6 +100,7 @@ const NewGame = (props) => {
 
     const { gameid, username } = useParams()
     const color = React.useContext(ColorContext)
+
     return <CreateNewGame userName={username} gameId={gameid} didRedirect={color.playerDidRedirect} setUserName={props.setUserName()} />
 }
 
