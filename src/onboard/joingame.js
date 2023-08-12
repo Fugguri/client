@@ -17,6 +17,13 @@ const JoinGameRoom = (gameid, userName, isCreator) => {
      * 
      * TODO: handle the case when the game room doesn't exist. 
      */
+    try {
+        socket.emit('createNewGame', gameid)
+    }
+    catch (err) {
+        console.log(err)
+    }
+
     const idData = {
         gameId: gameid,
         userName: userName,
