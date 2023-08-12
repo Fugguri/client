@@ -3,7 +3,7 @@ import { Redirect } from 'react-router-dom'
 import { v4 as uuid_v4 } from "uuid";
 import { ColorContext } from '../context/colorcontext'
 const socket = require('../connection/socket').socket
-
+import { useParams } from 'react-router-dom'
 /**
  * Onboard is where we create the game room.
  */
