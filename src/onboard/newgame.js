@@ -65,6 +65,8 @@ class CreateNewGame extends React.Component {
     render() {
         // !!! TODO: edit this later once you have bought your own domain. 
         this.send()
+        console.log('создание')
+
         return (<React.Fragment>
             {
                 this.state.didGetUserName ?

@@ -23,7 +23,7 @@ class JoinTheGame extends React.Component {
 
 
     render() {
-
+        console.log('присоединение')
         return (<React.Fragment>
             {
                 this.state.didGetUserName ?
