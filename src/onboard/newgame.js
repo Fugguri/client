@@ -70,7 +70,7 @@ class CreateNewGame extends React.Component {
         return (<React.Fragment>
             {
                 this.state.didGetUserName ?
-                    <Redirect to={"/new/" + this.state.userName + "/" + this.state.gameId}>
+                    <Redirect to={"/game/" + this.state.gameId + "/" + this.state.userName} >
                         <button className="btn btn-success" style={{ marginLeft: String((window.innerWidth / 2) - 60) + "px", width: "120px" }}>Start Game</button>
                     </Redirect>
                     :
@@ -104,7 +104,7 @@ class CreateNewGame extends React.Component {
 
 const NewGame = (props) => {
 
-    const { username, gameid } = useParams()
+    const { gameid, username } = useParams()
     const color = React.useContext(ColorContext)
     return <CreateNewGame userName={username} gameId={gameid} didRedirect={color.playerDidRedirect} setUserName={props.setUserName()} />
 }

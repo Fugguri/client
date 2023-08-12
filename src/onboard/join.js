@@ -56,7 +56,7 @@ class JoinTheGame extends React.Component {
 
 const Join = (props) => {
 
-    const { username } = useParams()
+    const { gameid, username } = useParams()
     const color = React.useContext(ColorContext)
     return <JoinTheGame userName={username} />
 }
