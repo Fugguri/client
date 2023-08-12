@@ -28,9 +28,9 @@ class CreateNewGame extends React.Component {
          * This method should create a new room in the '/' namespace
          * with a unique identifier. 
          */
-        console.log(this.props.gameData.gameid)
-        const newGameRoomId = this.gameData
-        const userName = this.gameData.username
+        const params = useParams()
+        const newGameRoomId = params.gameid
+        const userName = params.username
         // set the state of this component with the gameId so that we can
         // redirect the user to that URL later. 
         this.setState({
@@ -99,10 +99,8 @@ class CreateNewGame extends React.Component {
 
 const NewGame = (props) => {
 
-    const params = useParams()
     const color = React.useContext(ColorContext)
-    console.log(params)
-    return <CreateNewGame gameData={params} didRedirect={color.playerDidRedirect} setUserName={props.setUserName()} />
+    return <CreateNewGame didRedirect={color.playerDidRedirect} setUserName={props.setUserName()} />
 }
 
 
