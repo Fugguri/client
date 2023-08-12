@@ -291,8 +291,13 @@ const ChessGameWrapper = (props) => {
 
         socket.on('give userName', (socketId) => {
             if (socket.id !== socketId) {
-                console.log("give userName stage: " + username)
-                socket.emit('recieved userName', { userName: username, gameId: gameid })
+                if (username) {
+                    console.log("give userName stage: " + username)
+                    socket.emit('recieved userName', { userName: username, gameId: gameid })
+                } else {
+                    console.log("give userName stage: " + props.myUserName)
+                    socket.emit('recieved userName', { userName: props.myUserName, gameId: gameid })
+                }
             }
         })
 
