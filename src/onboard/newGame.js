@@ -65,7 +65,7 @@ class CreateNewGame extends React.Component {
             {
                 this.state.didGetUserName ?
 
-                    <Redirect to={"/game/" + this.state.gameId}> */}
+                    <Redirect to={"/game/" + this.state.gameId}>
                         <button className="btn btn-success" style={{ marginLeft: String((window.innerWidth / 2) - 60) + "px", width: "120px" }}>Start Game</button>
                     </Redirect>
 
@@ -101,7 +101,7 @@ const newGame = (props) => {
 
     const params = useParams()
     const color = React.useContext(ColorContext)
-
+    console.log(params)
     return <CreateNewGame gameData={params} didRedirect={color.playerDidRedirect} setUserName={props.setUserName()} />
 }
 
