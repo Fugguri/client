@@ -13,7 +13,7 @@ class CreateNewGame extends React.Component {
 
 
     state = {
-        didGetUserName: true,
+        didGetUserName: false,
         inputText: "",
         gameId: ""
     }
@@ -37,6 +37,10 @@ class CreateNewGame extends React.Component {
             gameId: newGameRoomId
         })
 
+        this.setState({
+            didGetUserName: true
+        })
+        this.props.didRedirect()
         // emit an event to the server to create a new room 
         socket.emit('createNewGame', newGameRoomId)
 
