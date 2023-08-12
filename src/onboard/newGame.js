@@ -30,11 +30,12 @@ class CreateNewGame extends React.Component {
          */
 
         const newGameRoomId = this.props.params.gameid
+        const userName = this.props.params.username
         // set the state of this component with the gameId so that we can
         // redirect the user to that URL later. 
         this.setState({
-            inputText: this.props.params.username,
-            gameId: this.props.params.gameid
+            inputText: userName,
+            gameId: newGameRoomId
         })
 
         // emit an event to the server to create a new room 
@@ -42,7 +43,7 @@ class CreateNewGame extends React.Component {
 
         const idData = {
             gameId: newGameRoomId,
-            userName: username,
+            userName: userName,
             isCreator: true
         }
         socket.emit("playerJoinGame", idData)
