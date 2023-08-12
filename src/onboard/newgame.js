@@ -29,8 +29,8 @@ class CreateNewGame extends React.Component {
          * with a unique identifier. 
          */
 
-        const newGameRoomId = this.props.params.gameid
-        const userName = this.props.params.username
+        const newGameRoomId = this.params.gameid
+        const userName = this.params.username
         // set the state of this component with the gameId so that we can
         // redirect the user to that URL later. 
         this.setState({
