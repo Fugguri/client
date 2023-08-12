@@ -39,7 +39,6 @@ function App() {
               </React.Fragment>
               :
               <NewGame setUserName={setUserName} />
-
             }
 
           </Route>
