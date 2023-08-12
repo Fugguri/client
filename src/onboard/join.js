@@ -17,7 +17,6 @@ class JoinTheGame extends React.Component {
 
     constructor(props) {
         super(props);
-
         this.inputText = React.createRef();
     }
 
@@ -28,9 +27,7 @@ class JoinTheGame extends React.Component {
             {
                 this.state.didGetUserName ?
                     <React.Fragment>
-                        <JoinGame userName={this.props.userName} isCreator={false} />
                         <ChessGame myUserName={this.props.userName} />
-
                     </React.Fragment>
                     :
                     <div>
