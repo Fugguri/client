@@ -20,8 +20,10 @@ class CreateNewGame extends React.Component {
 
     constructor(props) {
         super(props);
-        this.userName = props.params.username
-        this.gameId = props.params.gameid
+        this.data = this.props.gameData()
+        this.gameid = this.data.username
+        this.gameid = this.data.gameid
+
         this.textArea = React.createRef();
     }
 
