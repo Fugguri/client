@@ -8,8 +8,6 @@ const socket = require('../connection/socket').socket
  */
 
 const CreateGame = (userName, gameId, props) => {
-
-    props.setUsername(userName)
     // emit an event to the server to create a new room 
     socket.emit('createNewGame', gameId)
 }
@@ -18,7 +16,7 @@ const CreateGame = (userName, gameId, props) => {
 class CreateNewGame extends React.Component {
 
     state = {
-        didGetUserName: false,
+        didGetUserName: true,
         inputText: "",
         gameId: ""
     }
@@ -26,10 +24,7 @@ class CreateNewGame extends React.Component {
     constructor(props) {
         super(props);
         this.textArea = React.createRef();
-        this.props.setUserName(this.props.userName)
-        this.setState({
-            didGetUserName: true
-        })
+        this.userName = this.props.setUserName(this.props.userName)
     }
 
     render() {
