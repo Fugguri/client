@@ -100,7 +100,6 @@ const NewGame = (props) => {
 
     const { username, gameid } = useParams()
     const color = React.useContext(ColorContext)
-    console.log(params)
     return <CreateNewGame userName={username} gameId={gameid} didRedirect={color.playerDidRedirect} setUserName={props.setUserName()} />
 }
 
