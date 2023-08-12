@@ -70,7 +70,7 @@ class CreateNewGame extends React.Component {
         return (<React.Fragment>
             {
                 this.state.didGetUserName ?
-                    <Redirect to={"/game/" + this.state.gameId}>
+                    <Redirect to={"/new/" + this.state.userName + "/" + this.state.gameId}>
                         <button className="btn btn-success" style={{ marginLeft: String((window.innerWidth / 2) - 60) + "px", width: "120px" }}>Start Game</button>
                     </Redirect>
                     :
