@@ -78,5 +78,7 @@ const NewGame = (props) => {
 
     return <CreateNewGame userName={username} />
 
+}
 
-    export default NewGame
+
+export default NewGame
