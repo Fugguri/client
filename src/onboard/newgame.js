@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Redirect } from 'react-router-dom'
 import { v4 as uuid_v4 } from "uuid";
 import { ColorContext } from '../context/colorcontext'
