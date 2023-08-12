@@ -31,9 +31,11 @@ class CreateNewGame extends React.Component {
 
         // set the state of this component with the gameId so that we can
         // redirect the user to that URL later. 
-        this.setState({
-            gameId: newGameRoomId
-        })
+        useEffect(() => {
+            this.setState({
+                gameId: newGameRoomId
+            })
+        }, []);
 
         // emit an event to the server to create a new room 
         socket.emit('createNewGame', newGameRoomId)
@@ -45,10 +47,11 @@ class CreateNewGame extends React.Component {
 
         // set the state with that text
 
-
-        this.setState({
-            inputText: typedText
-        })
+        useEffect(() => {
+            this.setState({
+                inputText: typedText
+            })
+        }, []);
     }
 
     render() {
