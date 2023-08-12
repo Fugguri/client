@@ -17,7 +17,7 @@ class JoinTheGame extends React.Component {
 
     constructor(props) {
         super(props);
-        this.username = this.props.params.username;
+
         this.inputText = React.createRef();
     }
 
@@ -28,8 +28,8 @@ class JoinTheGame extends React.Component {
             {
                 this.state.didGetUserName ?
                     <React.Fragment>
-                        <JoinGame userName={this.props.username} isCreator={false} />
-                        <ChessGame myUserName={this.props.username} />
+                        <JoinGame userName={this.props.userName} isCreator={false} />
+                        <ChessGame myUserName={this.props.userName} />
 
                     </React.Fragment>
                     :
@@ -57,9 +57,9 @@ class JoinTheGame extends React.Component {
 
 const Join = (props) => {
 
-    const params = useParams()
+    const { username } = useParams()
     const color = React.useContext(ColorContext)
-    return <JoinTheGame gameData={params} />
+    return <JoinTheGame userName={username} />
 }
 
 
