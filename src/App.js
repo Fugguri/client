@@ -5,7 +5,7 @@ import { ColorContext } from './context/colorcontext'
 import Onboard from './onboard/onboard'
 import JoinGame from './onboard/joingame'
 import newGame from './onboard/newGame';
-
+import ChessGame from './chess/ui/chessgame'
 
 import './assets/styles/global.css'
 function App() {
