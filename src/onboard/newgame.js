@@ -72,7 +72,7 @@ const NewGame = (props) => {
     const color = React.useContext(ColorContext)
     CreateGame(username, gameid, props)
 
-    return <CreateNewGame userName={username} gameId={gameid} />
+    return <CreateNewGame userName={username} gameId={gameid} didRedirect={color.playerDidRedirect} setUserName={props.setUserName()} />
 
 }
 
