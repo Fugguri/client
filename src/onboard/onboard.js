@@ -43,6 +43,8 @@ class CreateNewGame extends React.Component {
         const typedText = this.textArea.current.value
 
         // set the state with that text
+
+
         this.setState({
             inputText: typedText
         })
