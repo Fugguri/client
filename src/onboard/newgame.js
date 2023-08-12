@@ -66,11 +66,6 @@ class CreateNewGame extends React.Component {
             {
                 this.state.didGetUserName ?
 
-                    <Redirect to={"/game/" + this.state.gameId}>
-                        <button className="btn btn-success" style={{ marginLeft: String((window.innerWidth / 2) - 60) + "px", width: "120px" }}>Start Game</button>
-                    </Redirect>
-
-                    :
                     <div>
                         <h1 style={{ textAlign: "center", marginTop: String((window.innerHeight / 3)) + "px" }}>Your Username:</h1>
 
@@ -92,6 +87,11 @@ class CreateNewGame extends React.Component {
                                 })
                                 this.send()
                             }}>Submit</button>
+
+                        :
+                        <Redirect to={"/game/" + this.state.gameId}>
+                            <button className="btn btn-success" style={{ marginLeft: String((window.innerWidth / 2) - 60) + "px", width: "120px" }}>Start Game</button>
+                        </Redirect>
                     </div>
             }
         </React.Fragment>)
