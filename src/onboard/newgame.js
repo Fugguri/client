@@ -34,10 +34,7 @@ class CreateNewGame extends React.Component {
         // redirect the user to that URL later. 
         this.setState({
             inputText: userName,
-            gameId: newGameRoomId
-        })
-
-        this.setState({
+            gameId: newGameRoomId,
             didGetUserName: true
         })
         this.props.didRedirect()
