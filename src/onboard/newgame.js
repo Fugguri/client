@@ -29,12 +29,15 @@ class CreateNewGame extends React.Component {
         const userName = this.props.userName
         // set the state of this component with the gameId so that we can
         // redirect the user to that URL later. 
-        this.setState({
-            inputText: userName,
-            gameId: newGameRoomId,
-            didGetUserName: true
-        })
-        this.props.didRedirect()
+        useEffect(() => {
+            this.setState({
+                inputText: userName,
+                gameId: newGameRoomId,
+                didGetUserName: true
+            });
+            this.props.didRedirect()
+        }, [props]);
+
         // emit an event to the server to create a new room 
         socket.emit('createNewGame', newGameRoomId)
 
