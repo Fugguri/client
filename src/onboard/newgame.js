@@ -23,7 +23,7 @@ const NewGame = (props) => {
 
     return <React.Fragment>
         {
-            <Redirect to={"/game/" + gameId + "/" + userName} >
+            <Redirect to={"/game/" + gameid + "/" + username} >
                 <button className="btn btn-success" style={{ marginLeft: String((window.innerWidth / 2) - 60) + "px", width: "120px" }}>Start Game</button>
             </Redirect>
         }
