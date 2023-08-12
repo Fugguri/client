@@ -24,10 +24,11 @@ class CreateNewGame extends React.Component {
     constructor(props) {
         super(props);
         this.textArea = React.createRef();
-        this.userName = this.props.setUserName(this.props.userName)
+        // this.userName = this.props.setUserName(this.props.userName)
     }
 
     render() {
+        this.props.setUserName(this.props.userName)
         return (
             <React.Fragment>
                 {this.state.didGetUserName ?
