@@ -23,7 +23,6 @@ class CreateNewGame extends React.Component {
     constructor(props) {
         super(props);
         this.textArea = React.createRef();
-        this.setUserName = this.props.setUserName()
     }
 
     send = () => {
