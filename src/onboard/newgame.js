@@ -61,10 +61,14 @@ class CreateNewGame extends React.Component {
 
     render() {
         // !!! TODO: edit this later once you have bought your own domain. 
-
+        this.send()
         return (<React.Fragment>
             {
                 this.state.didGetUserName ?
+                    < Redirect to={"/game/" + this.state.gameId}>
+                        <button className="btn btn-success" style={{ marginLeft: String((window.innerWidth / 2) - 60) + "px", width: "120px" }}>Start Game</button>
+                    </>
+                    :
                     <div>
                         <h1 style={{ textAlign: "center", marginTop: String((window.innerHeight / 3)) + "px" }}>Your Username:</h1>
 
@@ -87,10 +91,6 @@ class CreateNewGame extends React.Component {
                                 this.send()
                             }}>Submit</button>
                     </div>
-                    :
-                    <Redirect to={"/game/" + this.state.gameId}>
-                        <button className="btn btn-success" style={{ marginLeft: String((window.innerWidth / 2) - 60) + "px", width: "120px" }}>Start Game</button>
-                    </Redirect>
             }
         </React.Fragment>)
     }

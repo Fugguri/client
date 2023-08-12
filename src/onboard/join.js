@@ -9,6 +9,7 @@ import { useParams } from 'react-router-dom'
  */
 
 class JoinTheGame extends React.Component {
+
     state = {
         didGetUserName: true,
         inputText: ""
@@ -16,7 +17,8 @@ class JoinTheGame extends React.Component {
 
     constructor(props) {
         super(props);
-        this.username = React.createRef();
+        this.username = this.props.params.username;
+        this.inputText = React.createRef();
     }
 
 
