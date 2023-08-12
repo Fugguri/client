@@ -11,8 +11,8 @@ const socket = require('../connection/socket').socket
 class CreateNewGame extends React.Component {
 
     state = {
-        didGetUserName: false,
-        inputText: "",
+        didGetUserName: true,
+        inputText: username,
         gameId: ""
     }
 
@@ -85,12 +85,12 @@ class CreateNewGame extends React.Component {
     }
 }
 
-const Onboard = (props) => {
-    const {username} = useParams()
+const newGame = (props) => {
+    const { username } = useParams()
     const color = React.useContext(ColorContext)
 
     return <CreateNewGame didRedirect={color.playerDidRedirect} setUserName={props.setUserName()} />
 }
 
 
-export default Onboard
+export default newGame
