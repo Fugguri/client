@@ -13,6 +13,9 @@ const CreateGame = (userName, gameId, props) => {
 
     // emit an event to the server to create a new room 
     socket.emit('createNewGame', gameId)
+
+
+
 }
 
 
@@ -29,12 +32,12 @@ class CreateNewGame extends React.Component {
         this.textArea = React.createRef();
 
     }
-
+    React.useEffect
     render() {
         return (
             <React.Fragment>
                 {this.state.didGetUserName ?
-                    <Redirect to={"/game/" + this.props.gameId + "/" + this.props.userName} >
+                    <Redirect to={"/new/" + this.props.gameId + "/" + this.props.userName} >
                         <button className="btn btn-success" style={{ marginLeft: String((window.innerWidth / 2) - 60) + "px", width: "120px" }}>Start Game</button>
                     </Redirect> :
                     <div>

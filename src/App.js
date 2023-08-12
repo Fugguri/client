@@ -35,9 +35,13 @@ function App() {
             {didRedirect ?
               <React.Fragment>
                 <Join myUserName={userName} />
+                <ChessGame myUserName={userName} />
+                
               </React.Fragment>
               :
+              
               <NewGame setUserName={setUserName} />
+              
             }
 
           </Route>
