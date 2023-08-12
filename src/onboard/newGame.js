@@ -10,9 +10,11 @@ const socket = require('../connection/socket').socket
 
 class CreateNewGame extends React.Component {
 
+
+
     state = {
         didGetUserName: true,
-        inputText: username,
+        inputText: "",
         gameId: ""
     }
 
@@ -26,27 +28,34 @@ class CreateNewGame extends React.Component {
          * This method should create a new room in the '/' namespace
          * with a unique identifier. 
          */
-        const newGameRoomId = uuid_v4()
-
+        const { username, gameId } = useParams()
+        const newGameRoomId = gameId()
         // set the state of this component with the gameId so that we can
         // redirect the user to that URL later. 
         this.setState({
+            inputText: username,
             gameId: newGameRoomId
         })
 
         // emit an event to the server to create a new room 
         socket.emit('createNewGame', newGameRoomId)
+        const idData = {
+            gameId: newGameRoomId,
+            userName: username,
+            isCreator: true
+        }
+        socket.emit("playerJoinGame", idData)
     }
 
-    typingUserName = () => {
-        // grab the input text from the field from the DOM 
-        const typedText = this.textArea.current.value
+    // typingUserName = () => {
+    //     // grab the input text from the field from the DOM 
+    //     const typedText = this.textArea.current.value
 
-        // set the state with that text
-        this.setState({
-            inputText: typedText
-        })
-    }
+    //     // set the state with that text
+    //     this.setState({
+    //         inputText: typedText
+    //     })
+    // }
 
     render() {
         // !!! TODO: edit this later once you have bought your own domain. 
@@ -86,10 +95,10 @@ class CreateNewGame extends React.Component {
 }
 
 const newGame = (props) => {
-    const { username } = useParams()
+
     const color = React.useContext(ColorContext)
 
-    return <CreateNewGame didRedirect={color.playerDidRedirect} setUserName={props.setUserName()} />
+    return <CreateNewGame gameData={useParams()} didRedirect={color.playerDidRedirect} setUserName={props.setUserName()} />
 }
 
 

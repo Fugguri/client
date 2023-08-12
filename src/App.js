@@ -4,7 +4,7 @@ import JoinRoom from './onboard/joinroom'
 import { ColorContext } from './context/colorcontext'
 import Onboard from './onboard/onboard'
 import JoinGame from './onboard/joingame'
-import newGame from './chess/ui/newGame'
+import newGame from './onboard/newGame';
 
 import './assets/styles/global.css'
 function App() {
@@ -30,8 +30,8 @@ function App() {
             <Onboard setUserName={setUserName} />
           </Route>
 
-          <Route path="/newGame/:username:gameid" exact>
-            <Onboard setUserName={setUserName} />
+          <Route path="/new/:username/:gameid" exact>
+            <newGame setUserName={setUserName} />
           </Route>
 
           <Route path="/game/:gameid" exact>
