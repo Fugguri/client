@@ -6,7 +6,6 @@ import Onboard from './onboard/onboard'
 import JoinGame from './onboard/joingame'
 import ChessGame from './chess/ui/chessgame'
 import './assets/styles/global.css'
-
 function App() {
 
   const [didRedirect, setDidRedirect] = React.useState(false)
@@ -35,12 +34,11 @@ function App() {
               <React.Fragment>
                 <JoinGame userName={userName} isCreator={true} />
                 <ChessGame myUserName={userName} />
-
               </React.Fragment>
               :
               <JoinRoom />}
-            <Redirect to="/" />
           </Route>
+          <Redirect to="/" />
 
         </Switch>
 
