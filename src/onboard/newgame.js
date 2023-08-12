@@ -8,7 +8,7 @@ const socket = require('../connection/socket').socket
  */
 
 const CreateNewGame = (userName, gameId, props) => {
-    props.didRedirect()
+    props.setUsername(userName)
     // emit an event to the server to create a new room 
     socket.emit('createNewGame', gameId)
 }
