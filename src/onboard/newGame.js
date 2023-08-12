@@ -97,7 +97,7 @@ class CreateNewGame extends React.Component {
     }
 }
 
-const newGame = (props) => {
+const NewGame = (props) => {
 
     const params = useParams()
     const color = React.useContext(ColorContext)
@@ -106,4 +106,4 @@ const newGame = (props) => {
 }
 
 
-export default newGame
+export default NewGame
