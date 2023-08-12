@@ -20,10 +20,6 @@ class CreateNewGame extends React.Component {
 
     constructor(props) {
         super(props);
-        this.data = this.props.gameData()
-        this.gameid = this.data.username
-        this.gameid = this.data.gameid
-
         this.textArea = React.createRef();
     }
 
@@ -33,8 +29,8 @@ class CreateNewGame extends React.Component {
          * with a unique identifier. 
          */
 
-        const newGameRoomId = this.userName
-        const userName = this.gameId
+        const newGameRoomId = this.gameData.gameid
+        const userName = this.gameData.username
         // set the state of this component with the gameId so that we can
         // redirect the user to that URL later. 
         this.setState({
