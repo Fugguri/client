@@ -35,7 +35,7 @@ function App() {
             {didRedirect ?
               <React.Fragment>
                 <JoinGame isCreator={true} />
-                {/* <ChessGame /> */}
+                <ChessGame />
               </React.Fragment>
               :
               <NewGame setUserName={setUserName} setChessColor={setChessColor} />
