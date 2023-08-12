@@ -1,6 +1,6 @@
 import React from 'react'
 import { Redirect } from 'react-router-dom'
-import uuid from 'uuid/v4'
+import { v4 as uuid_v4 } from "uuid";
 import { ColorContext } from '../context/colorcontext' 
 const socket  = require('../connection/socket').socket
 
@@ -26,7 +26,7 @@ class CreateNewGame extends React.Component {
          * This method should create a new room in the '/' namespace
          * with a unique identifier. 
          */
-        const newGameRoomId = uuid()
+        const newGameRoomId = uuid_v4()
 
         // set the state of this component with the gameId so that we can
         // redirect the user to that URL later. 
