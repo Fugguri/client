@@ -43,13 +43,6 @@ class CreateNewGame extends React.Component {
         this.props.didRedirect()
         // emit an event to the server to create a new room 
         socket.emit('createNewGame', newGameRoomId)
-
-        const idData = {
-            gameId: newGameRoomId,
-            userName: userName,
-            isCreator: true
-        }
-        socket.emit("playerJoinGame", idData)
     }
 
     // typingUserName = () => {
