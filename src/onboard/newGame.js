@@ -65,7 +65,11 @@ class CreateNewGame extends React.Component {
             {
                 this.state.didGetUserName ?
 
-                    <Redirect to={"/game/" + this.state.gameId}><button className="btn btn-success" style={{ marginLeft: String((window.innerWidth / 2) - 60) + "px", width: "120px" }}>Start Game</button></Redirect>
+                    <Redirect to={"/game/" + this.state.gameId}>
+                        <JoinGame userName={this.state.inputText} isCreator={true} />
+                        <ChessGame myUserName={this.state.inputText} />
+                        <button className="btn btn-success" style={{ marginLeft: String((window.innerWidth / 2) - 60) + "px", width: "120px" }}>Start Game</button>
+                    </Redirect>
 
                     :
                     <div>

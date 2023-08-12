@@ -6,6 +6,7 @@ import Onboard from './onboard/onboard'
 import JoinGame from './onboard/joingame'
 import newGame from './onboard/newGame';
 
+
 import './assets/styles/global.css'
 function App() {
 
