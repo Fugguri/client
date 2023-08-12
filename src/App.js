@@ -6,7 +6,7 @@ import Onboard from './onboard/onboard'
 import JoinGame from './onboard/joingame'
 import NewGame from './onboard/newGame';
 import ChessGame from './chess/ui/chessgame'
-
+import Join from './onboard/join';
 import './assets/styles/global.css'
 function App() {
 
@@ -32,7 +32,14 @@ function App() {
           </Route>
 
           <Route path="/new/:username/:gameid" exact>
-            <newGame setUserName={setUserName} />
+          {didRedirect ?
+              <React.Fragment>
+                <ChessGame myUserName={userName} />
+              </React.Fragment>
+              :
+              <Join myUserName={userName} />
+            }
+
           </Route>
 
           <Route path="/game/:gameid" exact>
