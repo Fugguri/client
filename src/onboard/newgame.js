@@ -71,9 +71,11 @@ class CreateNewGame extends React.Component {
 
         return (<React.Fragment>
             {this.state.color ?
-                <Redirect to={"/new/" + this.state.userName + "/" + this.state.gameId}>
-                    <button className="btn btn-success" style={{ marginLeft: String((window.innerWidth / 2) - 60) + "px", width: "120px" }}>Start Game</button>
-                </Redirect> :
+                // <Redirect to={"/new/" + this.state.userName + "/" + this.state.gameId}>
+                //     <button className="btn btn-success" style={{ marginLeft: String((window.innerWidth / 2) - 60) + "px", width: "120px" }}>Start Game</button>
+                // </Redirect> 
+                <div>h1</div>
+                :
                 <div>
                     <h1 style={{ textAlign: "center", marginTop: String((window.innerHeight / 3)) + "px" }}>select chess color:</h1>
 
