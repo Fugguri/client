@@ -30,14 +30,14 @@ function App() {
           </Route>
 
           <Route path="/game/:gameid" exact>
-            {/* {didRedirect ?
+            {didRedirect ?
               <React.Fragment>
                 <JoinGame userName={userName} isCreator={true} />
                 <ChessGame myUserName={userName} />
               </React.Fragment>
-              : */}
-            <JoinRoom />
-
+              :
+              <JoinRoom />
+            }
           </Route>
           <Redirect to="/" />
 
