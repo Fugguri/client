@@ -32,7 +32,7 @@ function App() {
           </Route>
 
           <Route path="/new/:username/:gameid" exact>
-            <NewGame setUserName={setUserName} />
+            <newGame setUserName={setUserName} />
           </Route>
 
           <Route path="/game/:gameid" exact>
