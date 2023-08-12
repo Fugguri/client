@@ -28,8 +28,8 @@ class CreateNewGame extends React.Component {
          * This method should create a new room in the '/' namespace
          * with a unique identifier. 
          */
-
-        const newGameRoomId = this.gameData.gameid
+        console.log(this.props)
+        const newGameRoomId = this.gameData
         const userName = this.gameData.username
         // set the state of this component with the gameId so that we can
         // redirect the user to that URL later. 
