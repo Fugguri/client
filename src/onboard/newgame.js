@@ -16,6 +16,7 @@ class CreateNewGame extends React.Component {
         didGetUserName: false,
         inputText: "",
         gameId: "",
+        didGetColor: false,
         color: ""
     }
 
@@ -70,7 +71,7 @@ class CreateNewGame extends React.Component {
         console.log('создание')
 
         return (<React.Fragment>
-            {this.state.color ?
+            {this.state.didGetColor ?
                 <Redirect to={"/game/" + this.state.userName + "/" + this.state.gameId}>
                     <button className="btn btn-success" style={{ marginLeft: String((window.innerWidth / 2) - 60) + "px", width: "120px" }}>Start Game</button>
                 </Redirect>
@@ -92,7 +93,7 @@ class CreateNewGame extends React.Component {
                             this.props.didRedirect()
                             // this.props.setUserName(this.state.userName)
                             this.setState({
-                                didGetUserName: true
+                                didGetColor: true
                             })
                             this.send()
                         }}>Submit</button>
