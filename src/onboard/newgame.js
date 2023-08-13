@@ -136,6 +136,7 @@ const NewGame = (props) => {
         gameId={gameid}
         didRedirect={color.playerDidRedirect}
         setUserName={props.setUserName}
+        room={room}
     />
 }
 
