@@ -26,8 +26,8 @@ class CreateNewGame extends React.Component {
         super(props);
         this.textArea = React.createRef();
         this.username = this.props.userName
-
-        console.log(this.props.room)
+        let a = socket.emit('isRoomExist', this.props.gameId)
+        console.log(a)
         if (this.props.room.isExist) {
 
             this.setState({
@@ -67,7 +67,7 @@ class CreateNewGame extends React.Component {
 
         // emit an event to the server to create a new room 
         let a = socket.emit('createNewGame', newGameRoomId)
-        console.log(a)
+
 
     }
 
