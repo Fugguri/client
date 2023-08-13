@@ -71,7 +71,6 @@ class CreateNewGame extends React.Component {
         // emit an event to the server to create a new room 
         socket.emit('createNewGame', newGameRoomId)
         let a = socket.emit('isGameExist', this.props.gameId)
-        console.log(a)
 
 
     }
@@ -138,7 +137,6 @@ const NewGame = (props) => {
 
     const { gameid, username } = useParams()
     const color = React.useContext(ColorContext)
-    // const room = addRoom({ gameId: gameid, creator: username })
     return <CreateNewGame userName={username}
         gameId={gameid}
         didRedirect={color.playerDidRedirect}
