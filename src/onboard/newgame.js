@@ -111,9 +111,6 @@ class CreateNewGame extends React.Component {
                                 disabled={!(this.state.color.length > 0)}
                                 onClick={() => {
 
-                                    console.log(this.state)
-                                    console.log(this.props)
-
                                     this.setState({
                                         username: this.props.userName
                                     })
@@ -138,7 +135,7 @@ const NewGame = (props) => {
     const { gameid, username } = useParams()
     const color = React.useContext(ColorContext)
     let room = props.activeRooms.find(o => o.gameId === gameid);
-
+    console.log(room)
     return <CreateNewGame userName={username}
         gameId={gameid}
         didRedirect={color.playerDidRedirect}
