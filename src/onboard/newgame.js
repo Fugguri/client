@@ -89,7 +89,7 @@ class CreateNewGame extends React.Component {
                         <button className="btn btn-success" style={{ marginLeft: String((window.innerWidth / 2) - 60) + "px", width: "120px" }}>Start Game</button>
                     </Redirect>
                     :
-                    !this.state.creator && isRoomExist ?
+                    !this.state.creator && this.state.isRoomExist ?
                         <React.Fragment>
                             <JoinGame userName={this.props.userName} isCreator={false} />
                             <ChessGame myUserName={this.props.userName} />
