@@ -26,9 +26,9 @@ class CreateNewGame extends React.Component {
         this.textArea = React.createRef();
         this.username = this.props.userName
         let obj = this.props.activeRooms.find(o => o.gameId === this.props.gameId);
+        console.log(obj)
         if (obj) {
 
-            console.log(obj)
             this.setState({
                 isRoomExist: true,
                 creator: true
