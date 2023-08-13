@@ -76,7 +76,7 @@ class CreateNewGame extends React.Component {
         // !!! TODO: edit this later once you have bought your own domain. 
 
         socket.on('isGameExist', (data) => {
-
+            console.log("redir", data)
             if (data.isExist && data.creator !== undefined && data.creator !== this.username) {
                 console.log("is exist redir")
                 return (<React.Fragment>
@@ -92,38 +92,31 @@ class CreateNewGame extends React.Component {
                     <Redirect to={"/new/" + this.state.gameId + "/" + this.state.username}>
                         <button className="btn btn-success" style={{ marginLeft: String((window.innerWidth / 2) - 60) + "px", width: "120px" }}>Start Game</button>
                     </Redirect>
-
                     :
-                    !this.state.creator && this.state.isRoomExist ?
-                        <React.Fragment>
-                            <JoinGame userName={this.props.userName} isCreator={false} />
-                            <ChessGame myUserName={this.props.userName} />
-                        </React.Fragment>
-                        :
-                        <div>
-                            <h1 style={{ textAlign: "center", marginTop: String((window.innerHeight / 3)) + "px" }}>select chess color:</h1>
+                    <div>
+                        <h1 style={{ textAlign: "center", marginTop: String((window.innerHeight / 3)) + "px" }}>select chess color:</h1>
 
-                            <input style={{ marginLeft: String((window.innerWidth / 2) - 120) + "px", width: "240px", marginTop: "62px" }}
-                                ref={this.textArea}
-                                onInput={this.typingColor}></input>
+                        <input style={{ marginLeft: String((window.innerWidth / 2) - 120) + "px", width: "240px", marginTop: "62px" }}
+                            ref={this.textArea}
+                            onInput={this.typingColor}></input>
 
-                            <button className="btn btn-primary"
-                                style={{ marginLeft: String((window.innerWidth / 2) - 60) + "px", width: "120px", marginTop: "62px" }}
-                                disabled={!(this.state.color.length > 0)}
-                                onClick={() => {
+                        <button className="btn btn-primary"
+                            style={{ marginLeft: String((window.innerWidth / 2) - 60) + "px", width: "120px", marginTop: "62px" }}
+                            disabled={!(this.state.color.length > 0)}
+                            onClick={() => {
 
-                                    this.setState({
-                                        username: this.props.userName
-                                    })
-                                    this.props.didRedirect()
-                                    this.props.setUserName(this.state.username)
-                                    this.isCreator()
-                                    this.setState({
-                                        didGetColor: true,
-                                    })
-                                    this.send()
-                                }}>Submit</button>
-                        </div>
+                                this.setState({
+                                    username: this.props.userName
+                                })
+                                this.props.didRedirect()
+                                this.props.setUserName(this.state.username)
+                                this.isCreator()
+                                this.setState({
+                                    didGetColor: true,
+                                })
+                                this.send()
+                            }}>Submit</button>
+                    </div>
 
             }
 
