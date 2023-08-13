@@ -16,7 +16,6 @@ socket.on("createNewGame", statusUpdate => {
 })
 
 socket.on("isGameExist", statusUpdate => {
-    console.log(statusUpdate)
     console.log("isexist! isExist: " + statusUpdate.isExist.isExist + ", Game id: " + statusUpdate.gameId + " Socket id: " + statusUpdate.mySocketId)
     mySocketId = statusUpdate.mySocketId
 
