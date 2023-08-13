@@ -22,7 +22,6 @@ class CreateNewGame extends React.Component {
 
     constructor(props) {
         super(props);
-
         this.textArea = React.createRef();
     }
 
@@ -32,7 +31,7 @@ class CreateNewGame extends React.Component {
         const userName = this.props.userName
         const typedText = this.textArea.current.value
 
-        console.log(userName)
+        console.log(setUserName)
         console.log(newGameRoomId)
         this.setState({
             inputText: typedText,
