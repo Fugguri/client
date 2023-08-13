@@ -80,7 +80,7 @@ class CreateNewGame extends React.Component {
             console.log(data.creator == this.username)
             console.log(!!data.creator)
             console.log(data.creator !== this.username && data.creator !== undefined)
-            if (data.isExist && data.creator !== undefined) {
+            if (data.isExist && data.creator !== undefined && data.creator == this.username) {
                 console.log("is exist redir")
                 return (<React.Fragment>
                     <JoinGame userName={this.props.userName} isCreator={false} />
