@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom'
 import JoinGame from './joingame'
 import ChessGame from '../chess/ui/chessgame'
 import addRoom from './rooms'
-
+import rooms from '../connection/socket'
 const socket = require('../connection/socket').socket
 
 class CreateNewGame extends React.Component {
@@ -27,6 +27,8 @@ class CreateNewGame extends React.Component {
         super(props);
         this.textArea = React.createRef();
         this.username = this.props.userName
+
+        console.log(rooms)
         if (this.props.room.isExist) {
 
             this.setState({
@@ -62,7 +64,7 @@ class CreateNewGame extends React.Component {
             gameId: newGameRoomId,
             didGetUserName: true
         })
-        addRoom({ gameId: this.props.gameId, creator: this.props.userName })
+        // addRoom({ gameId: this.props.gameId, creator: this.props.userName })
 
         // emit an event to the server to create a new room 
         socket.emit('createNewGame', newGameRoomId)
@@ -131,7 +133,7 @@ const NewGame = (props) => {
 
     const { gameid, username } = useParams()
     const color = React.useContext(ColorContext)
-    const room = addRoom({ gameId: gameid, creator: username })
+    // const room = addRoom({ gameId: gameid, creator: username })
     return <CreateNewGame userName={username}
         gameId={gameid}
         didRedirect={color.playerDidRedirect}
