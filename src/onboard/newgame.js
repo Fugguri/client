@@ -16,7 +16,8 @@ class CreateNewGame extends React.Component {
         inputText: "",
         gameId: "",
         didGetColor: false,
-        color: ""
+        color: "",
+        username: ""
     }
 
     constructor(props) {
