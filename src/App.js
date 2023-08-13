@@ -6,6 +6,7 @@ import Onboard from './onboard/onboard'
 import JoinGame from './onboard/joingame'
 import ChessGame from './chess/ui/chessgame'
 import './assets/styles/global.css'
+import NewGame from './onboard/newgame';
 function App() {
 
   const [didRedirect, setDidRedirect] = React.useState(false)
@@ -27,6 +28,18 @@ function App() {
         <Switch>
           <Route path="/" exact>
             <Onboard setUserName={setUserName} />
+          </Route>
+
+          <Route path="/new/:gameid/:username" exact>
+            {didRedirect ?
+              <React.Fragment>
+                <JoinGame isCreator={true} />
+                <ChessGame userName={userName} />
+              </React.Fragment>
+              :
+              <NewGame setUserName={setUserName} />
+            }
+
           </Route>
 
           <Route path="/game/:gameid" exact>
