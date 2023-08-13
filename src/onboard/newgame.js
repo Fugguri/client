@@ -135,7 +135,7 @@ const NewGame = (props) => {
     const { gameid, username } = useParams()
     const color = React.useContext(ColorContext)
     let room = props.activeRooms.find(o => o.gameId === gameid);
-    console.log(room)
+    console.log(activeRooms)
     return <CreateNewGame userName={username}
         gameId={gameid}
         didRedirect={color.playerDidRedirect}
