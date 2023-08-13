@@ -87,7 +87,7 @@ class CreateNewGame extends React.Component {
 
         return (<React.Fragment>
             {
-                this.state.didGetColor && !this.state.isRoomExist ?
+                this.state.didGetColor && this.state.creator ?
                     <Redirect to={"/new/" + this.props.userName + "/" + this.props.gameId}>
                         <button className="btn btn-success" style={{ marginLeft: String((window.innerWidth / 2) - 60) + "px", width: "120px" }}>Start Game</button>
                     </Redirect>
