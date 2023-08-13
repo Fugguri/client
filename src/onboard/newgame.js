@@ -37,6 +37,7 @@ class CreateNewGame extends React.Component {
                 this.setState({
                     creator: true
                 })
+                console.log("creator")
             }
         }
     }
