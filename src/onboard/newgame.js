@@ -40,7 +40,6 @@ class CreateNewGame extends React.Component {
             didGetUserName: true
         })
 
-        this.props.setUserName(this.state.username)
         // emit an event to the server to create a new room 
         // socket.emit('createNewGame', newGameRoomId)
 
@@ -85,7 +84,7 @@ class CreateNewGame extends React.Component {
 
                             this.props.didRedirect()
 
-
+                            this.props.setUserName(this.state.username)
 
                             this.setState({
                                 didGetColor: true
@@ -99,12 +98,9 @@ class CreateNewGame extends React.Component {
 }
 
 const NewGame = (props) => {
+
     const { gameid, username } = useParams()
     const color = React.useContext(ColorContext)
-
-    console.log(props)
-    console.log(gameid, username)
-    props.setUserName(username)
 
     return <CreateNewGame userName={username} gameId={gameid} didRedirect={color.playerDidRedirect} />
 }
