@@ -35,7 +35,7 @@ class CreateNewGame extends React.Component {
             })
             if (obj.creator === this.props.userName) {
                 this.setState({
-                    creator: (obj.creator === this.props.userName)
+                    creator: true
                 })
             }
         }
