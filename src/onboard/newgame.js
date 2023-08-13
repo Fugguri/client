@@ -84,7 +84,7 @@ class CreateNewGame extends React.Component {
                     join: true,
                     isAdmin: false
                 })
-                return ()
+
             }
         })
 
