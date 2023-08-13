@@ -27,7 +27,7 @@ class CreateNewGame extends React.Component {
         this.textArea = React.createRef();
         this.username = this.props.userName
 
-        console.log(rooms)
+        console.log(this.props.room)
         if (this.props.room.isExist) {
 
             this.setState({
