@@ -44,7 +44,10 @@ class CreateNewGame extends React.Component {
     isCreator = () => {
         if (this.state.creator) {
 
-
+            this.props.setNewActiveRoom([...this.props.activeRooms, {
+                gameId: this.props.gameId,
+                creator: this.props.userName,
+            }])
             this.setState({
                 isRoomExist: true
             })
@@ -85,10 +88,10 @@ class CreateNewGame extends React.Component {
         return (<React.Fragment>
             {
                 this.state.didGetColor ?
-                    <React.Fragment>
-                        <JoinGame userName={this.props.userName} isCreator={true} />
-                        <ChessGame myUserName={this.props.userName} />
-                    </React.Fragment>
+                    <Redirect to={"/new/" + this.state.gameId + "/" + this.state.username}>
+                        <button className="btn btn-success" style={{ marginLeft: String((window.innerWidth / 2) - 60) + "px", width: "120px" }}>Start Game</button>
+                    </Redirect>
+
                     :
                     !this.state.creator && this.state.isRoomExist ?
                         <React.Fragment>
@@ -101,22 +104,18 @@ class CreateNewGame extends React.Component {
 
                             <input style={{ marginLeft: String((window.innerWidth / 2) - 120) + "px", width: "240px", marginTop: "62px" }}
                                 ref={this.textArea}
-                                onInput={this.typingColor}>
-
-                            </input>
+                                onInput={this.typingColor}></input>
 
                             <button className="btn btn-primary"
                                 style={{ marginLeft: String((window.innerWidth / 2) - 60) + "px", width: "120px", marginTop: "62px" }}
                                 disabled={!(this.state.color.length > 0)}
                                 onClick={() => {
 
+
+
                                     this.setState({
                                         username: this.props.userName
                                     })
-                                    this.props.setNewActiveRoom([...this.props.activeRooms, {
-                                        gameId: this.props.gameId,
-                                        creator: this.props.userName,
-                                    }])
                                     this.props.didRedirect()
                                     this.props.setUserName(this.props.userName)
                                     this.isCreator()
@@ -138,7 +137,7 @@ const NewGame = (props) => {
     const { gameid, username } = useParams()
     const color = React.useContext(ColorContext)
     let room = props.activeRooms.find(o => o.gameId === gameid);
-    console.log(props.activeRooms)
+
     return <CreateNewGame userName={username}
         gameId={gameid}
         didRedirect={color.playerDidRedirect}
