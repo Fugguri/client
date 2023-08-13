@@ -135,7 +135,7 @@ const NewGame = (props) => {
 
     const { gameid, username } = useParams()
     const color = React.useContext(ColorContext)
-    let room = props.rooms.find(o => o.gameId === gameid);
+    // let room = props.rooms.find(o => o.gameId === gameid);
     console.log(props.rooms)
     return <CreateNewGame userName={username}
         gameId={gameid}
