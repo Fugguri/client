@@ -84,14 +84,16 @@ class CreateNewGame extends React.Component {
                     join: true,
                     isAdmin: false
                 })
+                return ()
             }
         })
 
         return (<React.Fragment>
-            {this.state.join && !this.state.isAdmin ? <React.Fragment>
-                <Redirect to={"/game/" + this.state.gameId}><button className="btn btn-success" style={{ marginLeft: String((window.innerWidth / 2) - 60) + "px", width: "120px" }}>Start Game</button></Redirect>
-
-            </React.Fragment> :
+            {this.state.join && !this.state.isAdmin ?
+                <React.Fragment>
+                    <JoinGame userName={this.props.userName} isCreator={false} />
+                    <ChessGame myUserName={this.props.userName} />
+                </React.Fragment> :
                 this.state.didGetColor ?
                     <Redirect to={"/new/" + this.state.gameId + "/" + this.state.username}>
                         <button className="btn btn-success" style={{ marginLeft: String((window.innerWidth / 2) - 60) + "px", width: "120px" }}>Start Game</button>
