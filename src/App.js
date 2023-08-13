@@ -38,7 +38,7 @@ function App() {
                 <ChessGame userName={userName} />
               </React.Fragment>
               :
-              <NewGame setUserName={setUserName} setChessColor={setChessColor} />
+              <NewGame setUserName={this.setUserName} setChessColor={setChessColor} />
             }
 
           </Route>
