@@ -90,7 +90,7 @@ class CreateNewGame extends React.Component {
                         <ChessGame myUserName={this.props.userName} />
                     </React.Fragment>
                     :
-                    !this.state.creator ?
+                    !this.state.creator && this.state.isRoomExist ?
                         <React.Fragment>
                             <JoinGame userName={this.props.userName} isCreator={false} />
                             <ChessGame myUserName={this.props.userName} />
@@ -101,7 +101,9 @@ class CreateNewGame extends React.Component {
 
                             <input style={{ marginLeft: String((window.innerWidth / 2) - 120) + "px", width: "240px", marginTop: "62px" }}
                                 ref={this.textArea}
-                                onInput={this.typingColor}></input>
+                                onInput={this.typingColor}>
+
+                            </input>
 
                             <button className="btn btn-primary"
                                 style={{ marginLeft: String((window.innerWidth / 2) - 60) + "px", width: "120px", marginTop: "62px" }}
@@ -111,10 +113,10 @@ class CreateNewGame extends React.Component {
                                     this.setState({
                                         username: this.props.userName
                                     })
-                                    this.props.setNewActiveRoom({
+                                    this.props.setNewActiveRoom([...this.props.activeRooms, {
                                         gameId: this.props.gameId,
                                         creator: this.props.userName,
-                                    })
+                                    }])
                                     this.props.didRedirect()
                                     this.props.setUserName(this.props.userName)
                                     this.isCreator()
