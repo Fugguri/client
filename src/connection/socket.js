@@ -14,7 +14,7 @@ socket.on("createNewGame", statusUpdate => {
     rooms.push(statusUpdate)
 })
 
-function addRoom(room) {
+const addRoom = (room) => {
     console.log(room)
     console.log(rooms)
 
@@ -28,7 +28,7 @@ function addRoom(room) {
     return { isExist: !!isExist, creator: creator }
 }
 
-export default {
+export {
     socket,
     mySocketId,
     addRoom
