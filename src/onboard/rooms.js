@@ -20,4 +20,4 @@ const findRoom = (room) => {
     return !!isExist
 }
 
-module.export = { addRoom, findRoom }
+export default { addRoom, findRoom }
