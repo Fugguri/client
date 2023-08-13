@@ -14,7 +14,7 @@ socket.on("createNewGame", statusUpdate => {
     rooms.push(statusUpdate)
 })
 
-const addRoom = (room) => {
+addRoom = (room) => {
     console.log(room)
     console.log(rooms)
 
