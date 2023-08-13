@@ -11,13 +11,14 @@ let rooms = []
 socket.on("createNewGame", statusUpdate => {
     console.log("A new game has been created! Username: " + statusUpdate.userName + ", Game id: " + statusUpdate.gameId + " Socket id: " + statusUpdate.mySocketId)
     mySocketId = statusUpdate.mySocketId
-    rooms.push(statusUpdate)
+    rooms.push(statusUpdate.gameId)
+
 })
 
 socket.on("isGameExist", statusUpdate => {
     console.log("isexist! Username: " + statusUpdate.userName + ", Game id: " + statusUpdate.gameId + " Socket id: " + statusUpdate.mySocketId)
     mySocketId = statusUpdate.mySocketId
-    rooms.push(statusUpdate.gameId)
+
 })
 
 const addRoom = (room) => {
