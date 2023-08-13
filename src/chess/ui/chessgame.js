@@ -237,16 +237,6 @@ class ChessGame extends React.Component {
 
 
 const ChessGameWrapper = (props) => {
-    /**
-     * player 1
-     *      - socketId 1
-     *      - socketId 2 ???
-     * player 2
-     *      - socketId 2
-     *      - socketId 1
-     */
-
-
 
     // get the gameId from the URL here and pass it to the chessGame component as a prop. 
     const domainName = 'https://99605bb2fc3e.vps.myjino.ru'
