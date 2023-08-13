@@ -36,6 +36,7 @@ class CreateNewGame extends React.Component {
             didGetUserName: true
         })
 
+        this.props.setUserName(this.state.userName)
 
         this.props.didRedirect()
         // emit an event to the server to create a new room 
@@ -83,8 +84,6 @@ class CreateNewGame extends React.Component {
                             this.props.didRedirect()
                             console.log(this.props)
                             // this.props.setColor(this.state.color)
-                            this.props.setUserName(this.state.userName)
-
                             this.setState({
                                 didGetColor: true
                             })
