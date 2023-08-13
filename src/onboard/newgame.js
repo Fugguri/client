@@ -111,13 +111,11 @@ class CreateNewGame extends React.Component {
                                 disabled={!(this.state.color.length > 0)}
                                 onClick={() => {
 
-
-
                                     this.setState({
                                         username: this.props.userName
                                     })
                                     this.props.didRedirect()
-                                    this.props.setUserName(this.props.userName)
+                                    this.props.setUserName(this.state.username)
                                     this.isCreator()
                                     this.setState({
                                         didGetColor: true,
