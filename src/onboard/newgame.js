@@ -28,6 +28,7 @@ class CreateNewGame extends React.Component {
         if (this.props.newGameRoomId in this.props.activeRooms) {
             let obj = this.props.activeRooms.find(o => o.gameId === this.props.gameId);
 
+            console.log(obj)
             this.setState({
                 isRoomExist: true,
                 creator: (obj.creator === this.props.userName)
@@ -38,7 +39,6 @@ class CreateNewGame extends React.Component {
                 })
             }
         }
-        console.log(this.props.creator)
     }
 
     send = () => {
