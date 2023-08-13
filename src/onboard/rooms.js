@@ -1,6 +1,6 @@
 let rooms = []
 
-const addRoom = (room) => {
+export const addRoom = (room) => {
     console.log(room)
 
     const roomId = room.roomId
@@ -13,7 +13,7 @@ const addRoom = (room) => {
     return { isExist: !!isExist, creator: creator }
 }
 
-const findRoom = (room) => {
+export const findRoom = (room) => {
     const roomId = room.roomId
     const isExist = rooms.find((r) => r.roomId === roomId)
 
