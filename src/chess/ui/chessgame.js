@@ -193,11 +193,11 @@ class ChessGame extends React.Component {
             <React.Fragment>
                 <div style={{
                     backgroundImage: `url(${Board})`,
-                    backgroundColor:'#3E3E3E',
+                    backgroundColor: '#3E3E3E',
                     width: "720px",
                     height: "720px",
                     alignContent: "centre",
-                    
+
                 }
                 }
                 >
@@ -344,6 +344,7 @@ const ChessGameWrapper = (props) => {
                     </h1>
                     <textarea
                         style={{ marginLeft: String((window.innerWidth / 2) - 290) + "px", marginTop: "30" + "px", width: "580px", height: "30px" }}
+                        readOnly={true}
                         onFocus={(event) => {
                             console.log('sd')
                             event.target.select()
