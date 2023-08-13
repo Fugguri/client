@@ -249,9 +249,9 @@ const ChessGameWrapper = (props) => {
 
 
     // get the gameId from the URL here and pass it to the chessGame component as a prop. 
-    const domainName = 'https://99605bb2fc3e.vps.myjino.ru'
+    const domainName = 'https://99605bb2fc3e.vps.myjino.rua'
     const color = React.useContext(ColorContext)
-    const { username, gameid } = useParams()
+    const { username,gameid } = useParams()
     const [play] = useSound(chessMove);
     const [opponentSocketId, setOpponentSocketId] = React.useState('')
     const [opponentDidJoinTheGame, didJoinGame] = React.useState(false)
@@ -291,8 +291,8 @@ const ChessGameWrapper = (props) => {
 
         socket.on('give userName', (socketId) => {
             if (socket.id !== socketId) {
-                console.log("give userName stage: " + username)
-                socket.emit('recieved userName', { userName: username, gameId: gameid })
+                console.log("give userName stage: " + props.myUserName)
+                socket.emit('recieved userName', { userName: props.myUserName, gameId: gameid })
             }
         })
 
