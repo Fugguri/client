@@ -3,8 +3,8 @@ import { Redirect } from 'react-router-dom'
 import { ColorContext } from '../context/colorcontext'
 import { useParams } from 'react-router-dom'
 const socket = require('../connection/socket').socket
-import JoinGame from './onboard/joingame'
-import ChessGame from './chess/ui/chessgame'
+import JoinGame from './joingame'
+import ChessGame from '../chess/ui/chessgame'
 
 class CreateNewGame extends React.Component {
 
