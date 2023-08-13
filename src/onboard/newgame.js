@@ -44,10 +44,10 @@ class CreateNewGame extends React.Component {
     isCreator = () => {
         if (this.state.creator) {
 
-            this.props.setNewActiveRoom([...this.props.activeRooms, {
-                gameId: this.props.gameId,
-                creator: this.props.userName,
-            }])
+            // this.props.setNewActiveRoom([...this.props.activeRooms, {
+            //     gameId: this.props.gameId,
+            //     creator: this.props.userName,
+            // }])
             this.setState({
                 isRoomExist: true
             })
@@ -114,6 +114,7 @@ class CreateNewGame extends React.Component {
                                     this.setState({
                                         username: this.props.userName
                                     })
+                                    this.props.activeRooms[this.props.gameId] = this.props.userName
                                     this.props.didRedirect()
                                     this.props.setUserName(this.state.username)
                                     this.isCreator()
@@ -134,15 +135,15 @@ const NewGame = (props) => {
 
     const { gameid, username } = useParams()
     const color = React.useContext(ColorContext)
-    let room = props.activeRooms.find(o => o.gameId === gameid);
-
+    let room = props.rooms.find(o => o.gameId === gameid);
+    console.log(props.rooms)
     return <CreateNewGame userName={username}
         gameId={gameid}
         didRedirect={color.playerDidRedirect}
         setUserName={props.setUserName}
-        activeRooms={props.activeRooms}
+        activeRooms={props.rooms}
         setNewActiveRoom={props.setNewActiveRoom}
-        room={room} />
+        rooms={rooms} />
 }
 
 
