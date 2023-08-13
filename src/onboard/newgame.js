@@ -77,7 +77,7 @@ class CreateNewGame extends React.Component {
 
         socket.on('isGameExist', (data) => {
             console.log("redir", data)
-            console.log(data.creator, this.username)
+            console.log(data.creator == this.username)
             console.log(!!data.creator)
             console.log(data.creator !== this.username && data.creator !== undefined)
             if (data.isExist && data.creator !== undefined) {
