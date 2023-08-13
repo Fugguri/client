@@ -14,6 +14,12 @@ socket.on("createNewGame", statusUpdate => {
     rooms.push(statusUpdate)
 })
 
+socket.on("isGameExist", statusUpdate => {
+    console.log("isexist! Username: " + statusUpdate.userName + ", Game id: " + statusUpdate.gameId + " Socket id: " + statusUpdate.mySocketId)
+    mySocketId = statusUpdate.mySocketId
+    rooms.push(statusUpdate)
+})
+
 const addRoom = (room) => {
     console.log(room)
     console.log(rooms)

@@ -6,6 +6,8 @@ import JoinGame from './joingame'
 import ChessGame from '../chess/ui/chessgame'
 const addRoom = require('../connection/socket').addRoom
 const socket = require('../connection/socket').socket
+const rooms = require('../connection/socket').rooms
+
 
 class CreateNewGame extends React.Component {
 
@@ -28,6 +30,7 @@ class CreateNewGame extends React.Component {
         this.username = this.props.userName
         let a = socket.emit('isGameExist', this.props.gameId)
         console.log(a)
+        console.log(rooms)
         if (this.props.room.isExist) {
 
             this.setState({
@@ -68,7 +71,8 @@ class CreateNewGame extends React.Component {
         // emit an event to the server to create a new room 
         socket.emit('createNewGame', newGameRoomId)
         let a = socket.emit('isGameExist', this.props.gameId)
-        
+        console.log(a)
+
 
     }
 
