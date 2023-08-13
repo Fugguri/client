@@ -29,7 +29,7 @@ class CreateNewGame extends React.Component {
 
         const newGameRoomId = this.props.gameId
         const userName = this.props.userName
-
+        console.log(userName)
         this.setState({
             inputText: userName,
             gameId: newGameRoomId,
