@@ -75,8 +75,8 @@ class CreateNewGame extends React.Component {
     render() {
         // !!! TODO: edit this later once you have bought your own domain. 
 
-        socket.on('isGameExist', () => {
-            console.log(socket.isExist)
+        socket.on('isGameExist', (data) => {
+            console.log(data.isExist)
             if (socket.isExist) {
                 console.log("is exist redir")
                 return (<React.Fragment>
