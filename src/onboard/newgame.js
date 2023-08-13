@@ -53,7 +53,9 @@ class CreateNewGame extends React.Component {
                 isRoomExist: true,
                 creator: true
             })
+            this.send()
         }
+
     }
 
     send = () => {
@@ -121,7 +123,7 @@ class CreateNewGame extends React.Component {
                                     this.setState({
                                         didGetColor: true,
                                     })
-                                    this.send()
+
                                 }}>Submit</button>
                         </div>
 
