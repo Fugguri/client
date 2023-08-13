@@ -114,7 +114,7 @@ class CreateNewGame extends React.Component {
                                     this.setState({
                                         username: this.props.userName
                                     })
-                                    this.props.activeRooms[this.props.gameId] = this.props.userName
+                                    this.props.rooms[this.props.gameId] = this.props.userName
                                     this.props.didRedirect()
                                     this.props.setUserName(this.state.username)
                                     this.isCreator()
