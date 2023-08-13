@@ -20,6 +20,8 @@ function App() {
   }, [])
 
   const [userName, setUserName] = React.useState('')
+  const [activeRooms, setNewActiveRoom] = React.useState([])
+
 
   return (
     <ColorContext.Provider value={{ didRedirect: didRedirect, playerDidRedirect: playerDidRedirect, playerDidNotRedirect: playerDidNotRedirect }}>
@@ -37,7 +39,7 @@ function App() {
                 <ChessGame userName={userName} />
               </React.Fragment>
               :
-              <NewGame setUserName={setUserName} />
+              <NewGame setUserName={setUserName} activeRooms={activeRooms} setNewActiveRoom={setNewActiveRoom} />
             }
 
           </Route>

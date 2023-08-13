@@ -32,8 +32,8 @@ const JoinGame = (props) => {
      * the 'gameId' is the gameRoom ID. 
      */
     console.log(props)
-    const { gameid } = useParams()
-    JoinGameRoom(gameid, props.userName, props.isCreator)
+    const { username, gameid } = useParams()
+    JoinGameRoom(gameid, username, props.isCreator)
     return <div>
         <h1 style={{ textAlign: "center" }}>Welcome to T-Chess</h1>
         <h3 style={{ textAlign: "center" }}>Made for <a href='https://t.me/FugguriBot'>TChess Bot</a></h3>

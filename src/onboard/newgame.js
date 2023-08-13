@@ -3,13 +3,10 @@ import { Redirect } from 'react-router-dom'
 import { ColorContext } from '../context/colorcontext'
 import { useParams } from 'react-router-dom'
 const socket = require('../connection/socket').socket
-/**
- * Onboard is where we create the game room.
- */
+import JoinGame from './onboard/joingame'
+import ChessGame from './chess/ui/chessgame'
 
 class CreateNewGame extends React.Component {
-
-
 
     state = {
         didGetUserName: true,
@@ -17,13 +14,21 @@ class CreateNewGame extends React.Component {
         gameId: "",
         didGetColor: false,
         color: "",
-        username: ""
+        username: "",
+        isRoomExist: false
     }
 
     constructor(props) {
         super(props);
         this.textArea = React.createRef();
         this.username = this.props.userName
+        if (newGameRoomId in this.props.activeRooms) {
+            this.setState({
+                isRoomExist: true
+            })
+        } else {
+            this.props.setNewActiveRoom([...activeRooms, newGameRoomId])
+        }
     }
 
     send = () => {
@@ -32,8 +37,15 @@ class CreateNewGame extends React.Component {
         const userName = this.props.userName
         const typedText = this.textArea.current.value
 
-        console.log(newGameRoomId)
-        console.log(userName)
+        if (newGameRoomId in this.props.activeRooms) {
+            this.setState({
+                isRoomExist: true
+            })
+        } else {
+            this.props.setNewActiveRoom([...activeRooms, newGameRoomId])
+        }
+
+
         this.setState({
             inputText: typedText,
             username: userName,
@@ -44,12 +56,6 @@ class CreateNewGame extends React.Component {
         // emit an event to the server to create a new room 
         socket.emit('createNewGame', newGameRoomId)
 
-        // const idData = {
-        //     gameId: newGameRoomId,
-        //     userName: userName,
-        //     isCreator: true
-        // }
-        // socket.emit("playerJoinGame", idData)
     }
 
     typingColor = () => {
@@ -67,36 +73,45 @@ class CreateNewGame extends React.Component {
 
         return (<React.Fragment>
             {
-                this.state.didGetColor ?
-                    <Redirect to={"/new/" + this.state.username + "/" + this.state.gameId}>
-                        <button className="btn btn-success" style={{ marginLeft: String((window.innerWidth / 2) - 60) + "px", width: "120px" }}>Start Game</button>
-                    </Redirect>
+                this.state.isRoomExist ?
+                    <React.Fragment>
+                        <JoinGame userName={this.props.userName} isCreator={false} />
+                        <ChessGame myUserName={this.props.userName} />
+                    </React.Fragment>
                     :
-                    <div>
-                        <h1 style={{ textAlign: "center", marginTop: String((window.innerHeight / 3)) + "px" }}>select chess color:</h1>
+                    this.state.didGetColor ?
+                        <Redirect to={"/new/" + this.props.userName + "/" + this.props.gameId}>
+                            <button className="btn btn-success" style={{ marginLeft: String((window.innerWidth / 2) - 60) + "px", width: "120px" }}>Start Game</button>
+                        </Redirect>
+                        :
+                        <div>
+                            <h1 style={{ textAlign: "center", marginTop: String((window.innerHeight / 3)) + "px" }}>select chess color:</h1>
 
-                        <input style={{ marginLeft: String((window.innerWidth / 2) - 120) + "px", width: "240px", marginTop: "62px" }}
-                            ref={this.textArea}
-                            onInput={this.typingColor}></input>
+                            <input style={{ marginLeft: String((window.innerWidth / 2) - 120) + "px", width: "240px", marginTop: "62px" }}
+                                ref={this.textArea}
+                                onInput={this.typingColor}></input>
 
-                        <button className="btn btn-primary"
-                            style={{ marginLeft: String((window.innerWidth / 2) - 60) + "px", width: "120px", marginTop: "62px" }}
-                            disabled={!(this.state.color.length > 0)}
-                            onClick={() => {
-                                this.setState({
-                                    username: this.props.userName
-                                })
-                                this.props.didRedirect()
-                                console.log(this.props)
-                                this.props.setUserName(this.props.userName)
+                            <button className="btn btn-primary"
+                                style={{ marginLeft: String((window.innerWidth / 2) - 60) + "px", width: "120px", marginTop: "62px" }}
+                                disabled={!(this.state.color.length > 0)}
+                                onClick={() => {
+                                    this.setState({
+                                        username: this.props.userName
+                                    })
+                                    this.props.didRedirect()
+                                    console.log(this.props)
+                                    this.props.setUserName(this.props.userName)
 
-                                this.setState({
-                                    didGetColor: true
-                                })
-                                this.send()
-                            }}>Submit</button>
-                    </div>
+                                    this.setState({
+                                        didGetColor: true
+                                    })
+                                    this.send()
+                                }}>Submit</button>
+                        </div>
+
+
             }
+
         </React.Fragment>)
     }
 }
@@ -106,7 +121,11 @@ const NewGame = (props) => {
     const { gameid, username } = useParams()
     const color = React.useContext(ColorContext)
 
-    return <CreateNewGame userName={username} gameId={gameid} didRedirect={color.playerDidRedirect} setUserName={props.setUserName} />
+    return <CreateNewGame userName={username}
+        gameId={gameid}
+        didRedirect={color.playerDidRedirect}
+        activeRooms={activeRooms}
+        setNewActiveRoom={setNewActiveRoom} />
 }
 
 
