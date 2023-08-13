@@ -84,10 +84,6 @@ class CreateNewGame extends React.Component {
                     join: true,
                     isAdmin: false
                 })
-                return (<React.Fragment>
-                    <JoinGame userName={this.props.userName} isCreator={false} />
-                    <ChessGame myUserName={this.props.userName} />
-                </React.Fragment>)
             }
         })
 
