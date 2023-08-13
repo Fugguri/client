@@ -46,7 +46,7 @@ function App() {
 
           </Route>
 
-          <Route path="/game/:gameid" exact>
+          <Route path="/game/:gameid(/:userName)" exact>
             {didRedirect ?
               <React.Fragment>
                 <JoinGame userName={userName} isCreator={true} />
