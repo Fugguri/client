@@ -9,7 +9,7 @@ const addRoom = (room) => {
     const isExist = rooms.find((r) => r.roomId === roomId)
 
     !isExist && rooms.push(room)
-
+    console.log(rooms)
     return { isExist: !!isExist, creator: creator }
 }
 
