@@ -4,7 +4,9 @@ import JoinRoom from './onboard/joinroom'
 import { ColorContext } from './context/colorcontext'
 import Onboard from './onboard/onboard'
 import JoinGame from './onboard/joingame'
+// import NewGame from './onboard/newgame';
 import ChessGame from './chess/ui/chessgame'
+// import Join from './onboard/join';
 import './assets/styles/global.css'
 function App() {
 
@@ -29,14 +31,27 @@ function App() {
             <Onboard setUserName={setUserName} />
           </Route>
 
-          <Route path="/game/:gameid" exact>
+          {/* <Route path="/new/:gameid/:username" exact>
+            {didRedirect ?
+              <React.Fragment>
+                <JoinGame isCreator={true} />
+                <ChessGame userName={userName} />
+              </React.Fragment>
+              :
+              <NewGame setUserName={setUserName} />
+            }
+
+          </Route> */}
+
+          <Route path="/game" exact>
             {didRedirect ?
               <React.Fragment>
                 <JoinGame userName={userName} isCreator={true} />
                 <ChessGame myUserName={userName} />
               </React.Fragment>
               :
-              <JoinRoom />}
+              <JoinRoom />
+            }
           </Route>
           <Redirect to="/" />
 

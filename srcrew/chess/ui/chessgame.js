@@ -193,11 +193,11 @@ class ChessGame extends React.Component {
             <React.Fragment>
                 <div style={{
                     backgroundImage: `url(${Board})`,
-                    backgroundColor:'#3E3E3E',
+                    backgroundColor: '#3E3E3E',
                     width: "720px",
                     height: "720px",
                     alignContent: "centre",
-                    
+
                 }
                 }
                 >
@@ -249,9 +249,9 @@ const ChessGameWrapper = (props) => {
 
 
     // get the gameId from the URL here and pass it to the chessGame component as a prop. 
-    const domainName = 'http://localhost:3000'
+    const domainName = 'https://99605bb2fc3e.vps.myjino.rua'
     const color = React.useContext(ColorContext)
-    const { gameid } = useParams()
+    const { username,gameid } = useParams()
     const [play] = useSound(chessMove);
     const [opponentSocketId, setOpponentSocketId] = React.useState('')
     const [opponentDidJoinTheGame, didJoinGame] = React.useState(false)
@@ -344,12 +344,15 @@ const ChessGameWrapper = (props) => {
                     </h1>
                     <textarea
                         style={{ marginLeft: String((window.innerWidth / 2) - 290) + "px", marginTop: "30" + "px", width: "580px", height: "30px" }}
+                        readOnly={true}
                         onFocus={(event) => {
                             console.log('sd')
                             event.target.select()
                         }}
                         value={domainName + "/game/" + gameid}
-                        type="text">
+                        type="text"
+                    >
+
                     </textarea>
                     <br></br>
 

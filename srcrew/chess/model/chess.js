@@ -17,27 +17,27 @@ class Game {
         this.chess = new Chess()
 
         this.toCoord = thisPlayersColorIsWhite ? {
-            0:8, 1:7, 2: 6, 3: 5, 4: 4, 5: 3, 6: 2, 7: 1
+            0: 8, 1: 7, 2: 6, 3: 5, 4: 4, 5: 3, 6: 2, 7: 1
         } : {
-            0:1, 1:2, 2: 3, 3: 4, 4: 5, 5: 6, 6: 7, 7: 8
+            0: 1, 1: 2, 2: 3, 3: 4, 4: 5, 5: 6, 6: 7, 7: 8
         }
-        
+
         this.toAlphabet = thisPlayersColorIsWhite ? {
-            0:"a", 1:"b", 2: "c", 3: "d", 4: "e", 5: "f", 6: "g", 7: "h"
+            0: "a", 1: "b", 2: "c", 3: "d", 4: "e", 5: "f", 6: "g", 7: "h"
         } : {
-            0:"h", 1:"g", 2: "f", 3: "e", 4: "d", 5: "c", 6: "b", 7: "a"
+            0: "h", 1: "g", 2: "f", 3: "e", 4: "d", 5: "c", 6: "b", 7: "a"
         }
 
         this.toCoord2 = thisPlayersColorIsWhite ? {
-            8:0, 7:1, 6: 2, 5: 3, 4: 4, 3: 5, 2: 6, 1: 7
+            8: 0, 7: 1, 6: 2, 5: 3, 4: 4, 3: 5, 2: 6, 1: 7
         } : {
-            1:0, 2:1, 3: 2, 4: 3, 5: 4, 6: 5, 7: 6, 8: 7
+            1: 0, 2: 1, 3: 2, 4: 3, 5: 4, 6: 5, 7: 6, 8: 7
         }
-        
+
         this.toAlphabet2 = thisPlayersColorIsWhite ? {
-            "a":0, "b":1, "c":2, "d":3, "e":4, "f":5, "g":6, "h":7
+            "a": 0, "b": 1, "c": 2, "d": 3, "e": 4, "f": 5, "g": 6, "h": 7
         } : {
-            "h":0, "g":1, "f":2, "e":3, "d":4, "c":5, "b":6, "a":7
+            "h": 0, "g": 1, "f": 2, "e": 3, "d": 4, "c": 5, "b": 6, "a": 7
         }
 
         this.nQueens = 1
@@ -58,16 +58,16 @@ class Game {
     movePiece(pieceId, to, isMyMove) {
 
         const to2D = isMyMove ? {
-            105:0, 195:1, 285: 2, 375: 3, 465: 4, 555: 5, 645: 6, 735: 7
+            105: 0, 195: 1, 285: 2, 375: 3, 465: 4, 555: 5, 645: 6, 735: 7
         } : {
-            105:7, 195:6, 285: 5, 375: 4, 465: 3, 555: 2, 645: 1, 735: 0
+            105: 7, 195: 6, 285: 5, 375: 4, 465: 3, 555: 2, 645: 1, 735: 0
         }
 
 
         var currentBoard = this.getBoard()
         const pieceCoordinates = this.findPiece(currentBoard, pieceId)
-        
-        
+
+
         // can't find piece coordinates (piece doesn't exist on the board)
         if (!pieceCoordinates) {
             return
@@ -81,7 +81,7 @@ class Game {
         const to_x = to2D[to[0]]
 
         const originalPiece = currentBoard[y][x].getPiece()
-    
+
         if (y === to_y && x === to_x) {
             return "moved in the same position."
         }
@@ -94,10 +94,11 @@ class Game {
 
         const isPromotion = this.isPawnPromotion(to, pieceId[1])
         const moveAttempt = !isPromotion ? this.chess.move({
-                from: this.toChessMove([x, y], to2D),
-                to: this.toChessMove(to, to2D),
-                piece: pieceId[1]}) 
-            : 
+            from: this.toChessMove([x, y], to2D),
+            to: this.toChessMove(to, to2D),
+            piece: pieceId[1]
+        })
+            :
             this.chess.move({
                 from: this.toChessMove([x, y], to2D),
                 to: this.toChessMove(to, to2D),
@@ -106,7 +107,7 @@ class Game {
             })
 
 
-         console.log(moveAttempt)
+        console.log(moveAttempt)
         // console.log(isPromotion)
 
         if (moveAttempt === null) {
@@ -115,13 +116,13 @@ class Game {
 
 
         if (moveAttempt.flags === 'e') {
-            const move = moveAttempt.to 
+            const move = moveAttempt.to
             const x = this.toAlphabet2[move[0]]
             let y
             if (moveAttempt.color === 'w') {
                 y = parseInt(move[1], 10) - 1
             } else {
-                y = parseInt(move[1], 10) + 1 
+                y = parseInt(move[1], 10) + 1
             }
             currentBoard[this.toCoord2[y]][x].setPiece(null)
         }
@@ -150,9 +151,9 @@ class Game {
 
         const reassign = isPromotion ? currentBoard[to_y][to_x].setPiece(
             new ChessPiece(
-                'queen', 
-                false, 
-                pieceId[0] === 'w' ? 'white' : 'black', 
+                'queen',
+                false,
+                pieceId[0] === 'w' ? 'white' : 'black',
                 pieceId[0] === 'w' ? 'wq' + this.nQueens : 'bq' + this.nQueens))
             : currentBoard[to_y][to_x].setPiece(originalPiece)
 
@@ -197,11 +198,11 @@ class Game {
 
 
         const piece = moveAttempt.piece
-        const move = {from: moveAttempt.from, to: moveAttempt.to}
+        const move = { from: moveAttempt.from, to: moveAttempt.to }
 
-        const isBlackCastle = ((move.from === 'e1' && move.to === 'g1') || (move.from === 'e1' && move.to === 'c1')) 
+        const isBlackCastle = ((move.from === 'e1' && move.to === 'g1') || (move.from === 'e1' && move.to === 'c1'))
         const isWhiteCastle = (move.from === 'e8' && move.to === 'g8') || (move.from === 'e8' && move.to === 'c8')
-        
+
 
         if (!(isWhiteCastle || isBlackCastle) || piece !== 'k') {
             return {
@@ -224,14 +225,14 @@ class Game {
         } else { // e8 to c8
             originalPositionOfRook = 'a8'
             newPositionOfRook = 'd8'
-        }   
+        }
 
-    
+
         return {
-            didCastle: true, 
-            x: this.toAlphabet2[originalPositionOfRook[0]], 
-            y: this.toCoord2[originalPositionOfRook[1]], 
-            to_x: this.toAlphabet2[newPositionOfRook[0]], 
+            didCastle: true,
+            x: this.toAlphabet2[originalPositionOfRook[0]],
+            y: this.toCoord2[originalPositionOfRook[1]],
+            to_x: this.toAlphabet2[newPositionOfRook[0]],
             to_y: this.toCoord2[newPositionOfRook[1]]
         }
     }
@@ -247,22 +248,22 @@ class Game {
 
 
     toChessMove(finalPosition, to2D) {
-      
-        let move 
+
+        let move
 
         if (finalPosition[0] > 100) {
             move = this.toAlphabet[to2D[finalPosition[0]]] + this.toCoord[to2D[finalPosition[1]]]
         } else {
             move = this.toAlphabet[finalPosition[0]] + this.toCoord[finalPosition[1]]
         }
-       
-       //  console.log("proposed move: " + move)
+
+        //  console.log("proposed move: " + move)
         return move
     }
 
     findPiece(board, pieceId) {
         // ChessBoard, String -> [Int, Int]
-      //  console.log("piecetofind: " + pieceId)
+        //  console.log("piecetofind: " + pieceId)
         for (var i = 0; i < 8; i++) {
             for (var j = 0; j < 8; j++) {
                 if (board[i][j].getPieceIdOnThisSquare() === pieceId) {
@@ -282,7 +283,7 @@ class Game {
                 // i is vertical
                 const coordinatesOnCanvas = [((j + 1) * 90 + 15), ((i + 1) * 90 + 15)]
                 const emptySquare = new Square(j, i, null, coordinatesOnCanvas)
-                
+
                 startingChessBoard[i].push(emptySquare)
             }
         }
@@ -290,7 +291,7 @@ class Game {
         const blackBackRankId = ["br1", "bn1", "bb1", "bq1", "bk1", "bb2", "bn2", "br2"]
         for (var j = 0; j < 8; j += 7) {
             for (var i = 0; i < 8; i++) {
-                if (j == 0) {
+                if (j === 0) {
                     // top
                     // console.log(backRank[i])
                     startingChessBoard[j][this.thisPlayersColorIsWhite ? i : 7 - i].setPiece(new ChessPiece(backRank[i], false, this.thisPlayersColorIsWhite ? "black" : "white", this.thisPlayersColorIsWhite ? blackBackRankId[i] : whiteBackRankId[i]))
