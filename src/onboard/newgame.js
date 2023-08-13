@@ -116,7 +116,10 @@ class CreateNewGame extends React.Component {
                                     this.props.setUserName(this.props.userName)
                                     this.isCreator()
                                     this.setState({
-                                        didGetColor: true
+                                        didGetColor: true,
+                                        creator: true
+
+
                                     })
                                     this.send()
                                 }}>Submit</button>
