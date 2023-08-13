@@ -22,7 +22,7 @@ class CreateNewGame extends React.Component {
 
     constructor(props) {
         super(props);
-        this.setUserName = this.props.setUserName()
+
         this.textArea = React.createRef();
     }
 
@@ -30,6 +30,7 @@ class CreateNewGame extends React.Component {
 
         const newGameRoomId = this.props.gameId
         const userName = this.props.userName
+
         console.log(userName)
         this.setState({
             inputText: userName,
@@ -82,7 +83,7 @@ class CreateNewGame extends React.Component {
 
                             this.props.didRedirect()
 
-                            this.props.setUserName(this.state.userName)
+                            // this.props.setUserName(this.state.userName)
 
                             this.setState({
                                 didGetColor: true
@@ -101,9 +102,9 @@ const NewGame = (props) => {
 
     console.log(props)
     console.log(gameid, username)
+    props.setUserName(username)
 
-
-    return <CreateNewGame userName={username} gameId={gameid} didRedirect={color.playerDidRedirect} setUserName={props.setUserName()} />
+    return <CreateNewGame userName={username} gameId={gameid} didRedirect={color.playerDidRedirect} />
 }
 
 
