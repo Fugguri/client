@@ -31,7 +31,7 @@ class CreateNewGame extends React.Component {
             console.log(obj)
             this.setState({
                 isRoomExist: true,
-                creator: (obj.creator === this.props.userName)
+                creator: true
             })
             if (obj.creator === this.props.userName) {
                 this.setState({
@@ -50,12 +50,9 @@ class CreateNewGame extends React.Component {
                 creator: this.props.userName,
             }])
             this.setState({
-                isRoomExist: true,
-                creator: true
+                isRoomExist: true
             })
-            this.send()
         }
-
     }
 
     send = () => {
@@ -123,7 +120,7 @@ class CreateNewGame extends React.Component {
                                     this.setState({
                                         didGetColor: true,
                                     })
-
+                                    this.send()
                                 }}>Submit</button>
                         </div>
 
