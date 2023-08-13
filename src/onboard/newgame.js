@@ -22,12 +22,12 @@ class CreateNewGame extends React.Component {
         super(props);
         this.textArea = React.createRef();
         this.username = this.props.userName
-        if (newGameRoomId in this.props.activeRooms) {
+        if (this.props.newGameRoomId in this.props.activeRooms) {
             this.setState({
                 isRoomExist: true
             })
         } else {
-            this.props.setNewActiveRoom([...activeRooms, newGameRoomId])
+            this.props.setNewActiveRoom([...this.props.activeRooms, this.props.gameId])
         }
     }
 
@@ -37,13 +37,13 @@ class CreateNewGame extends React.Component {
         const userName = this.props.userName
         const typedText = this.textArea.current.value
 
-        if (newGameRoomId in this.props.activeRooms) {
-            this.setState({
-                isRoomExist: true
-            })
-        } else {
-            this.props.setNewActiveRoom([...activeRooms, newGameRoomId])
-        }
+        // if (newGameRoomId in this.props.activeRooms) {
+        //     this.setState({
+        //         isRoomExist: true
+        //     })
+        // } else {
+        //     this.props.setNewActiveRoom([...activeRooms, newGameRoomId])
+        // }
 
 
         this.setState({
@@ -124,8 +124,9 @@ const NewGame = (props) => {
     return <CreateNewGame userName={username}
         gameId={gameid}
         didRedirect={color.playerDidRedirect}
-        activeRooms={activeRooms}
-        setNewActiveRoom={setNewActiveRoom} />
+        setUserName={props.setUserName}
+        activeRooms={props.activeRooms}
+        setNewActiveRoom={props.setNewActiveRoom} />
 }
 
 
