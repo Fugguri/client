@@ -26,7 +26,7 @@ class CreateNewGame extends React.Component {
         this.textArea = React.createRef();
         this.username = this.props.userName
         let obj = this.props.activeRooms.find(o => o.gameId === this.props.gameId);
-        console.log(obj)
+
         if (obj) {
 
             this.setState({
@@ -111,6 +111,10 @@ class CreateNewGame extends React.Component {
                                 style={{ marginLeft: String((window.innerWidth / 2) - 60) + "px", width: "120px", marginTop: "62px" }}
                                 disabled={!(this.state.color.length > 0)}
                                 onClick={() => {
+
+                                    console.log(this.state)
+                                    console.log(this.props)
+
                                     this.setState({
                                         username: this.props.userName
                                     })
