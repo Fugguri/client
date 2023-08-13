@@ -8,7 +8,7 @@ const addRoom = (room) => {
 
     !isExist && rooms.push(room)
 
-    return { isExist: isExist, creator: creator }
+    return { isExist: !!isExist, creator: creator }
 }
 
 export default addRoom
