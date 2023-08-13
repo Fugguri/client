@@ -42,7 +42,7 @@ class CreateNewGame extends React.Component {
     }
 
     isCreator = () => {
-        if (creator) {
+        if (this.state.creator) {
 
             this.props.setNewActiveRoom([...this.props.activeRooms, {
                 gameId: this.props.gameId,
