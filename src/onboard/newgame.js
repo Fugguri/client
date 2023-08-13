@@ -2,9 +2,9 @@ import React from 'react'
 import { Redirect } from 'react-router-dom'
 import { ColorContext } from '../context/colorcontext'
 import { useParams } from 'react-router-dom'
-const socket = require('../connection/socket').socket
 import JoinGame from './joingame'
 import ChessGame from '../chess/ui/chessgame'
+const socket = require('../connection/socket').socket
 
 class CreateNewGame extends React.Component {
 
