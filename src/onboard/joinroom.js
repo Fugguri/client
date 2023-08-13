@@ -1,7 +1,8 @@
 import React from 'react'
 import JoinGame from './joingame'
 import ChessGame from '../chess/ui/chessgame'
-
+import { ColorContext } from '../context/colorcontext'
+import { useParams } from 'react-router-dom'
 
 /**
  * Onboard is where we create the game room.
