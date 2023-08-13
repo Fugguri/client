@@ -143,7 +143,7 @@ const NewGame = (props) => {
         setUserName={props.setUserName}
         activeRooms={props.rooms}
         setNewActiveRoom={props.setNewActiveRoom}
-        rooms={rooms} />
+        rooms={props.rooms} />
 }
 
 
