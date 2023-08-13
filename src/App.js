@@ -4,9 +4,9 @@ import JoinRoom from './onboard/joinroom'
 import { ColorContext } from './context/colorcontext'
 import Onboard from './onboard/onboard'
 import JoinGame from './onboard/joingame'
-import NewGame from './onboard/newgame';
+// import NewGame from './onboard/newgame';
 import ChessGame from './chess/ui/chessgame'
-import Join from './onboard/join';
+// import Join from './onboard/join';
 import './assets/styles/global.css'
 function App() {
 
