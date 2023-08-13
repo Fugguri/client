@@ -32,8 +32,8 @@ class CreateNewGame extends React.Component {
         const userName = this.props.userName
         const typedText = this.textArea.current.value
 
-        console.log(this.props.setUserName)
-        console.log(this.props.newGameRoomId)
+        console.log(newGameRoomId)
+        console.log(userName)
         this.setState({
             inputText: typedText,
             username: userName,
@@ -67,7 +67,7 @@ class CreateNewGame extends React.Component {
 
         return (<React.Fragment>
             {this.state.didGetColor ?
-                <Redirect to={"/new/" + this.state.userName + "/" + this.state.gameId}>
+                <Redirect to={"/new/" + this.state.username + "/" + this.state.gameId}>
                     <button className="btn btn-success" style={{ marginLeft: String((window.innerWidth / 2) - 60) + "px", width: "120px" }}>Start Game</button>
                 </Redirect>
                 :
