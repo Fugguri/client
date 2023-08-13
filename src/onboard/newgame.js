@@ -25,15 +25,14 @@ class CreateNewGame extends React.Component {
         super(props);
         this.textArea = React.createRef();
         this.username = this.props.userName
-        let obj = this.props.activeRooms.find(o => o.gameId === this.props.gameId);
-        console.log(obj)
-        if (obj) {
+        console.log(this.props.room)
+        if (this.props.room) {
 
             this.setState({
                 isRoomExist: true,
                 creator: true
             })
-            if (obj.creator === this.props.userName) {
+            if (this.props.room.creator === this.props.userName) {
                 this.setState({
                     creator: true
                 })
@@ -138,13 +137,15 @@ const NewGame = (props) => {
 
     const { gameid, username } = useParams()
     const color = React.useContext(ColorContext)
+    let room = props.activeRooms.find(o => o.gameId === gameid);
 
     return <CreateNewGame userName={username}
         gameId={gameid}
         didRedirect={color.playerDidRedirect}
         setUserName={props.setUserName}
         activeRooms={props.activeRooms}
-        setNewActiveRoom={props.setNewActiveRoom} />
+        setNewActiveRoom={props.setNewActiveRoom}
+        room={room} />
 }
 
 
