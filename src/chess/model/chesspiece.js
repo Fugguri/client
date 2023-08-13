@@ -13,7 +13,7 @@ class ChessPiece {
         // console.log(newSquare)
         if (newSquare === undefined) {
             this.squareThisPieceIsOn = newSquare
-            return 
+            return
         }
 
         if (this.squareThisPieceIsOn === undefined) {
@@ -21,7 +21,7 @@ class ChessPiece {
             newSquare.setPiece(this)
         }
 
-        const isNewSquareDifferent = this.squareThisPieceIsOn.x != newSquare.x || this.squareThisPieceIsOn.y != newSquare.y
+        const isNewSquareDifferent = this.squareThisPieceIsOn.x !== newSquare.x || this.squareThisPieceIsOn.y !== newSquare.y
 
         if (isNewSquareDifferent) {
             // console.log("set")
