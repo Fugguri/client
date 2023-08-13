@@ -66,8 +66,9 @@ class CreateNewGame extends React.Component {
         // addRoom({ gameId: this.props.gameId, creator: this.props.userName })
 
         // emit an event to the server to create a new room 
-        let a = socket.emit('createNewGame', newGameRoomId)
-
+        socket.emit('createNewGame', newGameRoomId)
+        let a = socket.emit('isGameExist', this.props.gameId)
+        
 
     }
 
