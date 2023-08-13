@@ -26,7 +26,7 @@ class CreateNewGame extends React.Component {
         super(props);
         this.textArea = React.createRef();
         this.username = this.props.userName
-        let a = socket.emit('isRoomExist', this.props.gameId)
+        let a = socket.emit('isGameExist', this.props.gameId)
         console.log(a)
         if (this.props.room.isExist) {
 
