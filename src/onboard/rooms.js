@@ -1,10 +1,12 @@
 let rooms = []
 
 const addRoom = (room) => {
+    console.log(room)
+
     const roomId = room.roomId
     const creator = room.creator
 
-    const isExist = rooms.find((r) => r.roomId === roomId && r.creator === creator)
+    const isExist = rooms.find((r) => r.roomId === roomId)
 
     !isExist && rooms.push(room)
 
