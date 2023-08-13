@@ -44,10 +44,7 @@ class CreateNewGame extends React.Component {
     isCreator = () => {
         if (this.state.creator) {
 
-            this.props.setNewActiveRoom([...this.props.activeRooms, {
-                gameId: this.props.gameId,
-                creator: this.props.userName,
-            }])
+
             this.setState({
                 isRoomExist: true
             })
@@ -114,6 +111,10 @@ class CreateNewGame extends React.Component {
                                     this.setState({
                                         username: this.props.userName
                                     })
+                                    this.props.setNewActiveRoom([...this.props.activeRooms, {
+                                        gameId: this.props.gameId,
+                                        creator: this.props.userName,
+                                    }])
                                     this.props.didRedirect()
                                     this.props.setUserName(this.props.userName)
                                     this.isCreator()
