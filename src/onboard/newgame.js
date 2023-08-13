@@ -29,7 +29,7 @@ class CreateNewGame extends React.Component {
     send = () => {
 
         const newGameRoomId = this.props.gameId
-        const userName = this.props.userName
+        const userName = this.state.username
         const typedText = this.textArea.current.value
 
         console.log(newGameRoomId)
