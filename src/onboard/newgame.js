@@ -74,15 +74,15 @@ class CreateNewGame extends React.Component {
 
     render() {
         // !!! TODO: edit this later once you have bought your own domain. 
-        // socket.on('isGameExist', () => {
-        //     if (socket.isExist) {
-        //         console.log("is exist redir")
-        //         return (<React.Fragment>
-        //             <JoinGame userName={this.props.userName} isCreator={false} />
-        //             <ChessGame myUserName={this.props.userName} />
-        //         </React.Fragment>)
-        //     }
-        // })
+        socket.on('isGameExist', () => {
+            if (socket.isExist) {
+                console.log("is exist redir")
+                return (<React.Fragment>
+                    <JoinGame userName={this.props.userName} isCreator={false} />
+                    <ChessGame myUserName={this.props.userName} />
+                </React.Fragment>)
+            }
+        })
 
         return (<React.Fragment>
             {
