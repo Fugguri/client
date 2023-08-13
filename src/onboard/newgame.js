@@ -4,6 +4,8 @@ import { ColorContext } from '../context/colorcontext'
 import { useParams } from 'react-router-dom'
 import JoinGame from './joingame'
 import ChessGame from '../chess/ui/chessgame'
+import addRoom from './rooms'
+
 const socket = require('../connection/socket').socket
 
 class CreateNewGame extends React.Component {
@@ -25,19 +27,17 @@ class CreateNewGame extends React.Component {
         super(props);
         this.textArea = React.createRef();
         this.username = this.props.userName
-        console.log(this.props.room)
-        if (this.props.room) {
+        if (this.props.room.isExist) {
 
             this.setState({
                 isRoomExist: true,
+            })
+        }
+        if (this.props.room.creator === this.props.userName) {
+            this.setState({
                 creator: true
             })
-            if (this.props.room.creator === this.props.userName) {
-                this.setState({
-                    creator: true
-                })
-                console.log("creator")
-            }
+            console.log("creator")
         }
     }
 
@@ -135,15 +135,14 @@ const NewGame = (props) => {
 
     const { gameid, username } = useParams()
     const color = React.useContext(ColorContext)
-    // let room = props.rooms.find(o => o.gameId === gameid);
-    console.log(props.rooms)
+    const room = addRoom({ gameId: gameid, creator: username })
+    console.log(room)
     return <CreateNewGame userName={username}
         gameId={gameid}
         didRedirect={color.playerDidRedirect}
         setUserName={props.setUserName}
-        activeRooms={props.rooms}
-        setNewActiveRoom={props.setNewActiveRoom}
-        rooms={props.rooms} />
+        room={room}
+    />
 }
 
 
