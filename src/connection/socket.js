@@ -16,5 +16,6 @@ socket.on("createNewGame", statusUpdate => {
 
 export {
     socket,
-    mySocketId
+    mySocketId,
+    rooms
 }
