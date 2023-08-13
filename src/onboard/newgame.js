@@ -84,12 +84,12 @@ class CreateNewGame extends React.Component {
 
         return (<React.Fragment>
             {
-                this.state.didGetColor && this.state.creator ?
+                this.state.didGetColor ?
                     <Redirect to={"/new/" + this.props.userName + "/" + this.props.gameId}>
                         <button className="btn btn-success" style={{ marginLeft: String((window.innerWidth / 2) - 60) + "px", width: "120px" }}>Start Game</button>
                     </Redirect>
                     :
-                    this.state.isRoomExist && !this.state.creator ?
+                    !this.state.creator ?
                         <React.Fragment>
                             <JoinGame userName={this.props.userName} isCreator={false} />
                             <ChessGame myUserName={this.props.userName} />
