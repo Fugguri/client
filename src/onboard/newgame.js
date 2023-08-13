@@ -25,8 +25,8 @@ class CreateNewGame extends React.Component {
         super(props);
         this.textArea = React.createRef();
         this.username = this.props.userName
-        if (this.props.newGameRoomId in this.props.activeRooms) {
-            let obj = this.props.activeRooms.find(o => o.gameId === this.props.gameId);
+        let obj = this.props.activeRooms.find(o => o.gameId === this.props.gameId);
+        if (obj) {
 
             console.log(obj)
             this.setState({
