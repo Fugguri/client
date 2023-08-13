@@ -31,18 +31,7 @@ class CreateNewGame extends React.Component {
         let a = socket.emit('isGameExist', this.props.gameId)
         console.log(a)
         console.log(rooms)
-        if (this.props.roomId)  {
 
-            this.setState({
-                isRoomExist: true,
-            })
-        }
-        if (this.props.room.creator === this.props.userName) {
-            this.setState({
-                creator: true
-            })
-
-        }
     }
 
     isCreator = () => {
