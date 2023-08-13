@@ -36,7 +36,7 @@ class CreateNewGame extends React.Component {
             didGetUserName: true
         })
 
-        this.props.setUserName(this.state.userName)
+        this.setUserName(this.state.userName)
 
         this.props.didRedirect()
         // emit an event to the server to create a new room 
