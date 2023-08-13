@@ -32,7 +32,7 @@ class CreateNewGame extends React.Component {
         const typedText = this.textArea.current.value
 
         console.log(setUserName)
-        console.log(newGameRoomId)
+        console.log(this.props.newGameRoomId)
         this.setState({
             inputText: typedText,
             username: userName,
