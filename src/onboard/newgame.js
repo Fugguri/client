@@ -50,7 +50,8 @@ class CreateNewGame extends React.Component {
                 creator: this.props.userName,
             }])
             this.setState({
-                isRoomExist: true
+                isRoomExist: true,
+                creator: true
             })
         }
     }
@@ -94,7 +95,7 @@ class CreateNewGame extends React.Component {
                         <ChessGame myUserName={this.props.userName} />
                     </React.Fragment>
                     :
-                    this.state.isRoomExist ?
+                    !this.state.creator && this.state.isRoomExist ?
                         <React.Fragment>
                             <JoinGame userName={this.props.userName} isCreator={false} />
                             <ChessGame myUserName={this.props.userName} />
@@ -119,9 +120,6 @@ class CreateNewGame extends React.Component {
                                     this.isCreator()
                                     this.setState({
                                         didGetColor: true,
-                                        creator: true
-
-
                                     })
                                     this.send()
                                 }}>Submit</button>
