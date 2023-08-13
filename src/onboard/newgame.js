@@ -19,7 +19,8 @@ class CreateNewGame extends React.Component {
         color: "",
         username: "",
         isRoomExist: false,
-        join: false
+        join: false,
+        isAdmin: true
     }
 
 
@@ -80,13 +81,14 @@ class CreateNewGame extends React.Component {
             if (data.isExist && data.creator !== undefined && data.creator != this.username) {
                 console.log("is exist redir")
                 this.setState({
-                    join: true
+                    join: true,
+                    isAdmin: false
                 })
             }
         })
 
         return (<React.Fragment>
-            {this.state.join ? <React.Fragment>
+            {this.state.join && !this.state.isAdmin ? <React.Fragment>
                 <JoinGame userName={this.props.userName} isCreator={false} />
                 <ChessGame myUserName={this.props.userName} />
             </React.Fragment> :
