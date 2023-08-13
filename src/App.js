@@ -7,6 +7,13 @@ import JoinGame from './onboard/joingame'
 import ChessGame from './chess/ui/chessgame'
 import './assets/styles/global.css'
 import NewGame from './onboard/newgame';
+
+setNewActiveRoom = (data) => {
+  activeRooms.push(data)
+
+}
+
+
 function App() {
 
   const [didRedirect, setDidRedirect] = React.useState(false)
@@ -21,10 +28,7 @@ function App() {
 
   const [userName, setUserName] = React.useState('')
   let activeRooms = {}
-  setNewActiveRoom = (data) => {
-    activeRdooms.push(data)
 
-  }
   // const [activeRdooms, setNewActiveRoom] = React.useState([])
 
 
