@@ -49,8 +49,7 @@ class CreateNewGame extends React.Component {
                 creator: this.props.userName,
             }])
             this.setState({
-                isRoomExist: true,
-                creator: (obj.creator === this.props.userName)
+                isRoomExist: true
             })
         }
     }
