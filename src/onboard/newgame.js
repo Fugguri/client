@@ -33,6 +33,21 @@ class CreateNewGame extends React.Component {
 
     }
 
+    componentDidMount() {
+
+        // register event listeners
+        socket.on('isGameExist', (data) => {
+
+            if (data.isExist && data.creator !== undefined && data.creator != this.username) {
+                this.setState({
+                    join: true,
+                    isAdmin: false
+                })
+            }
+        })
+    }
+
+
     isCreator = () => {
         if (this.state.creator) {
 
@@ -72,25 +87,15 @@ class CreateNewGame extends React.Component {
             color: typedText
         })
     }
-
+    join = () => {
+        console.log("join")
+        return this.state.join && !this.state.isAdmin
+    }
     render() {
         // !!! TODO: edit this later once you have bought your own domain. 
 
-        socket.on('isGameExist', (data) => {
-
-            if (data.isExist && data.creator !== undefined && data.creator != this.username) {
-                console.log("is exist redir")
-                this.setState({
-                    join: true,
-                    isAdmin: false
-                })
-
-
-            }
-        })
-
         return (<React.Fragment>
-            {this.state.join && !this.state.isAdmin ?
+            {this.join() ?
                 <React.Fragment>
                     <JoinGame userName={this.props.userName} isCreator={false} />
                     <ChessGame myUserName={this.props.userName} />
