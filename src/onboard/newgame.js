@@ -74,7 +74,9 @@ class CreateNewGame extends React.Component {
 
     render() {
         // !!! TODO: edit this later once you have bought your own domain. 
-        socket.on("isGameExist", statusUpdate => {
+
+        socket.on('isGameExist', () => {
+            console.log(socket.isExist)
             if (socket.isExist) {
                 console.log("is exist redir")
                 return (<React.Fragment>
@@ -82,9 +84,7 @@ class CreateNewGame extends React.Component {
                     <ChessGame myUserName={this.props.userName} />
                 </React.Fragment>)
             }
-
         })
-
 
         return (<React.Fragment>
             {

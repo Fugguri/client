@@ -19,6 +19,8 @@ socket.on("isGameExist", statusUpdate => {
     console.log("isexist! isExist: " + statusUpdate.isExist + ", Game id: " + statusUpdate.gameId + " Socket id: " + statusUpdate.mySocketId)
     mySocketId = statusUpdate.mySocketId
 
+    
+
 })
 
 const addRoom = (room) => {
