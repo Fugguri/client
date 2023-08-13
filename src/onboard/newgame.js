@@ -19,7 +19,7 @@ class CreateNewGame extends React.Component {
         color: "",
         username: "",
         isRoomExist: false,
-        creator: false
+        join: false
     }
 
 
@@ -76,21 +76,20 @@ class CreateNewGame extends React.Component {
         // !!! TODO: edit this later once you have bought your own domain. 
 
         socket.on('isGameExist', (data) => {
-            console.log("redir", data)
-            console.log(data.creator != this.username)
-            console.log(!!data.creator)
-            console.log(data.creator !== this.username && data.creator !== undefined)
+
             if (data.isExist && data.creator !== undefined && data.creator != this.username) {
                 console.log("is exist redir")
-                return (<React.Fragment>
-                    <JoinGame userName={this.props.userName} isCreator={false} />
-                    <ChessGame myUserName={this.props.userName} />
-                </React.Fragment>)
+                this.setState({
+                    join: true
+                })
             }
         })
 
         return (<React.Fragment>
-            {
+            {this.state.join ? <React.Fragment>
+                <JoinGame userName={this.props.userName} isCreator={false} />
+                <ChessGame myUserName={this.props.userName} />
+            </React.Fragment> :
                 this.state.didGetColor ?
                     <Redirect to={"/new/" + this.state.gameId + "/" + this.state.username}>
                         <button className="btn btn-success" style={{ marginLeft: String((window.innerWidth / 2) - 60) + "px", width: "120px" }}>Start Game</button>
