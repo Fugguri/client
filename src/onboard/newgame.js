@@ -83,7 +83,9 @@ class CreateNewGame extends React.Component {
                             style={{ marginLeft: String((window.innerWidth / 2) - 60) + "px", width: "120px", marginTop: "62px" }}
                             disabled={!(this.state.color.length > 0)}
                             onClick={() => {
-
+                                this.setState({
+                                    username: this.props.userName
+                                })
                                 this.props.didRedirect()
                                 console.log(this.state)
                                 this.props.setUserName(this.state.username)
