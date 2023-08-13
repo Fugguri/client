@@ -31,7 +31,6 @@ const JoinGame = (props) => {
      * Extract the 'gameId' from the URL. 
      * the 'gameId' is the gameRoom ID. 
      */
-    console.log(props)
     const { username, gameid } = useParams()
     JoinGameRoom(gameid, username, props.isCreator)
     return <div>

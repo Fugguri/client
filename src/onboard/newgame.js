@@ -31,13 +31,7 @@ class CreateNewGame extends React.Component {
                 isRoomExist: true,
                 creator: (obj.creator === this.props.userName)
             })
-            console.log(this.state)
 
-        } else {
-            this.props.setNewActiveRoom([...this.props.activeRooms, {
-                gameId: this.props.gameId,
-                creator: this.props.userName,
-            }])
         }
     }
 
@@ -110,14 +104,16 @@ class CreateNewGame extends React.Component {
                                     })
                                     this.props.didRedirect()
                                     this.props.setUserName(this.props.userName)
-
+                                    this.props.setNewActiveRoom([...this.props.activeRooms, {
+                                        gameId: this.props.gameId,
+                                        creator: this.props.userName,
+                                    }])
                                     this.setState({
                                         didGetColor: true
                                     })
                                     this.send()
                                 }}>Submit</button>
                         </div>
-
 
             }
 
