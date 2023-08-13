@@ -19,22 +19,6 @@ class CreateNewGame extends React.Component {
         creator: false
     }
 
-    updateStatus = () => {
-        if (this.props.newGameRoomId in this.props.activeRooms) {
-            let obj = this.props.activeRooms.find(o => o.gameId === this.props.gameId);
-            this.setState({
-                isRoomExist: true,
-                creator: obj.creator === this.props.userName
-            })
-            console.log(obj.creator === this.props.userName)
-
-        } else {
-            this.props.setNewActiveRoom([...this.props.activeRooms, {
-                gameId: this.props.gameId,
-                creator: this.props.userName,
-            }])
-        }
-    }
 
 
     constructor(props) {
@@ -125,7 +109,6 @@ class CreateNewGame extends React.Component {
                                         username: this.props.userName
                                     })
                                     this.props.didRedirect()
-                                    console.log(this.props)
                                     this.props.setUserName(this.props.userName)
 
                                     this.setState({
