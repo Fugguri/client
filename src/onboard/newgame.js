@@ -15,20 +15,32 @@ class CreateNewGame extends React.Component {
         didGetColor: false,
         color: "",
         username: "",
-        isRoomExist: false
+        isRoomExist: false,
+        creator: ""
     }
+
+    updateStatus = () => {
+        if (this.props.newGameRoomId in this.props.activeRooms) {
+            let obj = this.props.activeRooms.find(o => o.gameId === this.props.gameId);
+            this.setState({
+                isRoomExist: true,
+                creator: obj.creator
+            })
+
+        } else {
+            this.props.setNewActiveRoom([...this.props.activeRooms, {
+                gameId: this.props.gameId,
+                creator: this.props.userName,
+            }])
+        }
+    }
+
 
     constructor(props) {
         super(props);
         this.textArea = React.createRef();
         this.username = this.props.userName
-        if (this.props.newGameRoomId in this.props.activeRooms) {
-            this.setState({
-                isRoomExist: true
-            })
-        } else {
-            this.props.setNewActiveRoom([...this.props.activeRooms, this.props.gameId])
-        }
+
     }
 
     send = () => {
@@ -73,7 +85,7 @@ class CreateNewGame extends React.Component {
 
         return (<React.Fragment>
             {
-                this.state.didGetColor ?
+                this.state.didGetColor && this.state.creator ?
                     <Redirect to={"/new/" + this.props.userName + "/" + this.props.gameId}>
                         <button className="btn btn-success" style={{ marginLeft: String((window.innerWidth / 2) - 60) + "px", width: "120px" }}>Start Game</button>
                     </Redirect>
