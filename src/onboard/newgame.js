@@ -83,8 +83,8 @@ class CreateNewGame extends React.Component {
                         onClick={() => {
 
                             this.props.didRedirect()
-                            console.log(this.state.username)
-                            this.props.setUserName(this.state.userName)
+                            console.log(this.props.username)
+                            this.props.setUserName(this.props.userName)
 
                             this.setState({
                                 didGetColor: true
