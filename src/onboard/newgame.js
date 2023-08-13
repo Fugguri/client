@@ -85,7 +85,7 @@ class CreateNewGame extends React.Component {
 
                             this.props.didRedirect()
 
-                            this.props.setUserName(this.state.username)
+                            this.setUserName(this.state.username)
 
                             this.setState({
                                 didGetColor: true
