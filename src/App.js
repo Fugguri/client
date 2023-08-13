@@ -35,7 +35,7 @@ function App() {
             {didRedirect ?
               <React.Fragment>
                 <JoinGame isCreator={true} />
-                <ChessGame myUserName={userName} />
+                <ChessGame userName={userName} />
               </React.Fragment>
               :
               <NewGame setUserName={setUserName} setChessColor={setChessColor} />
@@ -43,7 +43,7 @@ function App() {
 
           </Route>
 
-          <Route path="/game(/:gameid)(/:username)" exact>
+          {/* <Route path="/game(/:gameid)(/:username)" exact>
             {didRedirect ?
               <React.Fragment>
                 <JoinGame userName={userName} isCreator={true} />
@@ -53,7 +53,7 @@ function App() {
               <JoinRoom />
             }
           </Route>
-          <Redirect to="/" />
+          <Redirect to="/" /> */}
 
         </Switch>
 
