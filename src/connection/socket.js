@@ -28,7 +28,7 @@ const addRoom = (room) => {
     return { isExist: !!isExist, creator: creator }
 }
 
-export {
+export default {
     socket,
     mySocketId,
     addRoom
