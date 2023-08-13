@@ -4,8 +4,7 @@ import { ColorContext } from '../context/colorcontext'
 import { useParams } from 'react-router-dom'
 import JoinGame from './joingame'
 import ChessGame from '../chess/ui/chessgame'
-import addRoom from './rooms'
-import rooms from '../connection/socket'
+import addRoom from '../connection/socket'
 const socket = require('../connection/socket').socket
 
 class CreateNewGame extends React.Component {
@@ -133,7 +132,7 @@ const NewGame = (props) => {
 
     const { gameid, username } = useParams()
     const color = React.useContext(ColorContext)
-    // const room = addRoom({ gameId: gameid, creator: username })
+    const room = addRoom({ gameId: gameid, creator: username })
     return <CreateNewGame userName={username}
         gameId={gameid}
         didRedirect={color.playerDidRedirect}
