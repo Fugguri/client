@@ -84,6 +84,7 @@ class CreateNewGame extends React.Component {
                         onClick={() => {
 
                             this.props.didRedirect()
+                            console.log(this.state)
                             this.props.setUserName(this.state.username)
 
                             this.setState({
