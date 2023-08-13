@@ -58,7 +58,7 @@ class CreateNewGame extends React.Component {
         // addRoom({ gameId: this.props.gameId, creator: this.props.userName })
 
         // emit an event to the server to create a new room 
-        socket.emit('createNewGame', newGameRoomId)
+        socket.emit('createNewGame', { gameId: newGameRoomId, creator: userName })
         let a = socket.emit('isGameExist', this.props.gameId)
 
 
@@ -76,15 +76,15 @@ class CreateNewGame extends React.Component {
 
     render() {
         // !!! TODO: edit this later once you have bought your own domain. 
-        socket.on('isGameExist', (data) => {
-            if (socket.gameId !== this.props.gameId) {
-                console.log("is exist redir")
-            }
-            return (<React.Fragment>
-                <JoinGame userName={this.props.userName} isCreator={false} />
-                <ChessGame myUserName={this.props.userName} />
-            </React.Fragment>)
-        })
+        // socket.on('isGameExist', () => {
+        //     if (socket.isExist) {
+        //         console.log("is exist redir")
+        //         return (<React.Fragment>
+        //             <JoinGame userName={this.props.userName} isCreator={false} />
+        //             <ChessGame myUserName={this.props.userName} />
+        //         </React.Fragment>)
+        //     }
+        // })
 
         return (<React.Fragment>
             {
