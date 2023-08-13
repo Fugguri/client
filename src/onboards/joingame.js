@@ -17,6 +17,13 @@ const JoinGameRoom = (gameid, userName, isCreator) => {
      * 
      * TODO: handle the case when the game room doesn't exist. 
      */
+    try {
+        socket.emit('createNewGame', gameid)
+    }
+    catch (err) {
+        console.log(err)
+    }
+
     const idData = {
         gameId: gameid,
         userName: userName,
@@ -31,11 +38,12 @@ const JoinGame = (props) => {
      * Extract the 'gameId' from the URL. 
      * the 'gameId' is the gameRoom ID. 
      */
-    const { gameid } = useParams()
-    JoinGameRoom(gameid, props.userName, props.isCreator)
+    const { gameid, userName } = useParams()
+    JoinGameRoom(gameid, userName, props.isCreator)
+    console.log(userName)
     return <div>
         <h1 style={{ textAlign: "center" }}>Welcome to T-Chess</h1>
-        <h3 style={{ textAlign: "center" }}>Made for <a href='https://t.me/FugguriBot'>TChess Bot</a></h3>
+        <h3 style={{ textAlign: "center" }}>Made for <a href='https://t.me/TChess_bot'>TChess Bot</a></h3>
     </div>
 }
 

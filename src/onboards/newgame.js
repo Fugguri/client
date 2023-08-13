@@ -28,8 +28,8 @@ class CreateNewGame extends React.Component {
 
     send = () => {
 
-        const newGameRoomId = this.gameId
-        const userName = this.userName
+        const newGameRoomId = this.props.gameId
+        const userName = this.props.userName
 
         console.log(userName)
         console.log(newGameRoomId)
@@ -67,7 +67,7 @@ class CreateNewGame extends React.Component {
 
         return (<React.Fragment>
             {this.state.didGetColor ?
-                <Redirect to={"/game/" + this.state.userName + "/" + this.state.gameId}>
+                <Redirect to={"/new/" + this.state.userName + "/" + this.state.gameId}>
                     <button className="btn btn-success" style={{ marginLeft: String((window.innerWidth / 2) - 60) + "px", width: "120px" }}>Start Game</button>
                 </Redirect>
                 :
