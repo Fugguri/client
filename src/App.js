@@ -20,7 +20,12 @@ function App() {
   }, [])
 
   const [userName, setUserName] = React.useState('')
-  const [activeRooms, setNewActiveRoom] = React.useState([])
+  let activeRooms = {}
+  setNewActiveRoom = (data) => {
+    activeRdooms.push(data)
+
+  }
+  // const [activeRdooms, setNewActiveRoom] = React.useState([])
 
 
   return (

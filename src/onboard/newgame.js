@@ -111,10 +111,10 @@ class CreateNewGame extends React.Component {
                                     this.setState({
                                         username: this.props.userName
                                     })
-                                    this.props.setNewActiveRoom([...this.props.activeRooms, {
+                                    this.props.setNewActiveRoom({
                                         gameId: this.props.gameId,
                                         creator: this.props.userName,
-                                    }])
+                                    })
                                     this.props.didRedirect()
                                     this.props.setUserName(this.props.userName)
                                     this.isCreator()
