@@ -87,7 +87,7 @@ class CreateNewGame extends React.Component {
                                     username: this.props.userName
                                 })
                                 this.props.didRedirect()
-                                console.log(this.state)
+                                console.log(this.props)
                                 this.props.setUserName(this.state.username)
 
                                 this.setState({
