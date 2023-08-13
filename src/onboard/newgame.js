@@ -23,6 +23,7 @@ class CreateNewGame extends React.Component {
     constructor(props) {
         super(props);
         this.textArea = React.createRef();
+        this.username = this.props.userName
     }
 
     send = () => {
@@ -83,8 +84,7 @@ class CreateNewGame extends React.Component {
                         onClick={() => {
 
                             this.props.didRedirect()
-                            console.log(this.props.username)
-                            this.props.setUserName(this.props.userName)
+                            this.props.setUserName(this.state.username)
 
                             this.setState({
                                 didGetColor: true
