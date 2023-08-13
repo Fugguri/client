@@ -34,7 +34,8 @@ class CreateNewGame extends React.Component {
         console.log(newGameRoomId)
 
         this.setState({
-            inputText: userName,
+            inputText: typedText,
+            username: userName,
             gameId: newGameRoomId,
             didGetUserName: true
         })
@@ -84,7 +85,7 @@ class CreateNewGame extends React.Component {
 
                             this.props.didRedirect()
 
-                            this.props.setUserName(this.state.userName)
+                            this.props.setUserName(this.state.username)
 
                             this.setState({
                                 didGetColor: true
