@@ -43,7 +43,7 @@ function App() {
 
           </Route>
 
-          {/* <Route path="/game(/:gameid)(/:username)" exact>
+          <Route path="/game(/:gameid)(/:username)" exact>
             {didRedirect ?
               <React.Fragment>
                 <JoinGame userName={userName} isCreator={true} />
@@ -53,7 +53,7 @@ function App() {
               <JoinRoom />
             }
           </Route>
-          <Redirect to="/" /> */}
+          <Redirect to="/" />
 
         </Switch>
 
