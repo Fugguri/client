@@ -25,7 +25,7 @@ class ChessGame extends React.Component {
 
 
     componentDidMount() {
-        console.log(this.props.myUserName)
+        console.log(this.username)
         console.log(this.props.opponentUserName)
         // register event listeners
         socket.on('opponent move', move => {
@@ -268,7 +268,7 @@ const ChessGameWrapper = (props) => {
 
         socket.on('start game', (opponentUserName) => {
             console.log("START!")
-            if (opponentUserName !== props.myUserName) {
+            if (opponentUserName !== username) {
                 setUserName(opponentUserName)
                 didJoinGame(true)
             } else {
@@ -282,8 +282,8 @@ const ChessGameWrapper = (props) => {
 
         socket.on('give userName', (socketId) => {
             if (socket.id !== socketId) {
-                console.log("give userName stage: " + props.myUserName)
-                socket.emit('recieved userName', { userName: props.myUserName, gameId: gameid })
+                console.log("give userName stage: " + username)
+                socket.emit('recieved userName', { userName: username, gameId: gameid })
             }
         })
 
@@ -312,11 +312,11 @@ const ChessGameWrapper = (props) => {
                         {/* <VideoChatApp
                 mySocketId={socket.id}
                 opponentSocketId={opponentSocketId}
-                myUserName={props.myUserName}
+                myUserName={username}
                 opponentUserName={opponentUserName}
               /> */}
                     </div>
-                    <h4> You: {props.myUserName} </h4>
+                    <h4> You: {username} </h4>
                 </div>
             ) : gameSessionDoesNotExist ? (
                 <div>
@@ -330,7 +330,7 @@ const ChessGameWrapper = (props) => {
                             marginTop: String(window.innerHeight / 8) + "px",
                         }}
                     >
-                        Hey <strong>{props.myUserName}</strong>, copy and paste the URL
+                        Hey <strong>{username}</strong>, copy and paste the URL
                         below to send to your friend:
                     </h1>
                     <textarea
