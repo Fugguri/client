@@ -17,7 +17,7 @@ const JoinGameRoom = (gameid, userName, isCreator) => {
      * 
      * TODO: handle the case when the game room doesn't exist. 
      */
-
+    console.log("connect")
     const idData = {
         gameId: gameid,
         userName: userName,
