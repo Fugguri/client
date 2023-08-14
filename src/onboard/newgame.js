@@ -39,7 +39,6 @@ class CreateNewGame extends React.Component {
         socket.on('isGameExist', (data) => {
             console.log(data)
             if (data.isExist && data.creator !== undefined && data.creator != this.username) {
-                this.props.playerNotIsCreator
                 this.setState({
                     join: true,
                     isAdmin: false
