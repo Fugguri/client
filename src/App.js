@@ -49,7 +49,7 @@ function App() {
           <Route path="/new/:gameid/:username" exact>
             {didRedirect ?
               <React.Fragment>
-                <JoinGame userName={userName} isCreator={isCreator} />
+                <JoinGame userName={userName} isCreator={true} />
                 <ChessGame userName={userName} />
               </React.Fragment>
               :
