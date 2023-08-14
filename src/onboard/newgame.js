@@ -89,18 +89,7 @@ class CreateNewGame extends React.Component {
     }
     join = () => {
         console.log("join")
-        // return this.state.join && !this.state.isAdmin
-        socket.emit('isGameExist', { gameId: this.props.gameId, userName: this.username })
-        socket.on('isGameExist', (data) => {
-            console.log(data)
-            if (data.isExist && data.creator !== undefined && data.creator != this.username) {
-                return true
-                this.setState({
-                    join: true,
-                    isAdmin: false
-                })
-            }
-        })
+        return this.state.join && !this.state.isAdmin
     }
     render() {
         // !!! TODO: edit this later once you have bought your own domain. 
