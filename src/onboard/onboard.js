@@ -35,7 +35,7 @@ class CreateNewGame extends React.Component {
         })
 
         // emit an event to the server to create a new room 
-        socket.emit('createNewGame', newGameRoomId)
+        socket.emit('createNewGame', newGameRoomId, this.state.inputText)
     }
 
     typingUserName = () => {

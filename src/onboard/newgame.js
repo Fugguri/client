@@ -29,7 +29,7 @@ class CreateNewGame extends React.Component {
         super(props);
         this.textArea = React.createRef();
         this.username = this.props.userName
-        socket.emit('isGameExist', { gameId: this.props.gameId, userName: this.username })
+        // socket.emit('isGameExist', { gameId: this.props.gameId, userName: this.username })
 
     }
 
@@ -37,7 +37,7 @@ class CreateNewGame extends React.Component {
 
         // register event listeners
         socket.on('isGameExist', (data) => {
-
+            console.log(data)
             if (data.isExist && data.creator !== undefined && data.creator != this.username) {
                 this.setState({
                     join: true,
