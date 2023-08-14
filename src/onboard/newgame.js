@@ -89,7 +89,7 @@ class CreateNewGame extends React.Component {
     join = () => {
         console.log("join")
 
-        if (!isRoomExist) {
+        if (!this.state.isRoomExist) {
             socket.emit('isGameExist', { gameId: this.props.gameId, userName: this.username })
             this.setState({
                 isRoomExist: true
