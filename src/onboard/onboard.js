@@ -27,7 +27,6 @@ class CreateNewGame extends React.Component {
          */
         const newGameRoomId = uuid_v4()
 
-        console
         // set the state of this component with the gameId so that we can
         // redirect the user to that URL later. 
         this.setState({
