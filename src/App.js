@@ -6,7 +6,6 @@ import Onboard from './onboard/onboard'
 import JoinGame from './onboard/joingame'
 import ChessGame from './chess/ui/chessgame'
 import './assets/styles/global.css'
-import NewGame from './onboard/newgame';
 function App() {
 
   const [didRedirect, setDidRedirect] = React.useState(false)
@@ -21,10 +20,6 @@ function App() {
 
   const [userName, setUserName] = React.useState('')
 
-  const [activeRooms, setNewActiveRoom] = React.useState([])
-
-  let rooms = {}
-
   return (
     <ColorContext.Provider value={{ didRedirect: didRedirect, playerDidRedirect: playerDidRedirect, playerDidNotRedirect: playerDidNotRedirect }}>
       <Router>
@@ -34,19 +29,7 @@ function App() {
             <Onboard setUserName={setUserName} />
           </Route>
 
-          <Route path="/new/:gameid/:username(/:data)" exact>
-            {didRedirect ?
-              <React.Fragment>
-                <JoinGame userName={userName} isCreator={true} />
-                <ChessGame userName={userName} />
-              </React.Fragment>
-              :
-              <NewGame setUserName={setUserName} activeRooms={activeRooms} setNewActiveRoom={setNewActiveRoom} rooms={rooms} />
-            }
-
-          </Route>
-
-          <Route path="/game/:gameid(/:userName)" exact>
+          <Route path="/game/:gameid" exact>
             {didRedirect ?
               <React.Fragment>
                 <JoinGame userName={userName} isCreator={true} />
