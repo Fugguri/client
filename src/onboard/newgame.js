@@ -88,7 +88,13 @@ class CreateNewGame extends React.Component {
     }
     join = () => {
         console.log("join")
-        socket.emit('isGameExist', { gameId: this.props.gameId, userName: this.username })
+
+        if (!isRoomExist) {
+            socket.emit('isGameExist', { gameId: this.props.gameId, userName: this.username })
+            this.setState({
+                isRoomExist: true
+            })
+        }
         if (this.state.join && !this.state.isAdmin) {
             this.props.didRedirect()
             this.props.playerNotIsCreator()
