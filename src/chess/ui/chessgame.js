@@ -241,7 +241,7 @@ const ChessGameWrapper = (props) => {
     // get the gameId from the URL here and pass it to the chessGame component as a prop. 
     const domainName = 'https://99605bb2fc3e.vps.myjino.ru'
     const color = React.useContext(ColorContext)
-    const { gameid } = useParams()
+    const { username, gameid } = useParams()
     const [play] = useSound(chessMove);
     const [opponentSocketId, setOpponentSocketId] = React.useState('')
     const [opponentDidJoinTheGame, didJoinGame] = React.useState(false)
@@ -254,11 +254,12 @@ const ChessGameWrapper = (props) => {
             if (socket.id !== statusUpdate.mySocketId) {
                 setOpponentSocketId(statusUpdate.mySocketId)
             }
+            console.log(statusUpdate)
+
         })
 
         socket.on("status", statusUpdate => {
-            console.log(statusUpdate)
-            // alert(statusUpdate)
+            alert(statusUpdate)
             if (statusUpdate === 'This game session does not exist.' || statusUpdate === 'There are already 2 people playing in this room.') {
                 doesntExist(true)
             }
