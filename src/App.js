@@ -29,6 +29,18 @@ function App() {
             <Onboard setUserName={setUserName} />
           </Route>
 
+          <Route path="/new/:gameid/:username(/:data)" exact>
+            {didRedirect ?
+              <React.Fragment>
+                <JoinGame userName={userName} isCreator={true} />
+                <ChessGame userName={userName} />
+              </React.Fragment>
+              :
+              <NewGame setUserName={setUserName} activeRooms={activeRooms} setNewActiveRoom={setNewActiveRoom} rooms={rooms} />
+            }
+
+          </Route>
+
           <Route path="/game/:gameid" exact>
             {didRedirect ?
               <React.Fragment>
