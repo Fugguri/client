@@ -157,6 +157,7 @@ const NewGame = (props) => {
         gameId={gameid}
         didRedirect={color.playerDidRedirect}
         playerIsCreator={color.playerIsCreator}
+        playerNotIsCreator={color.playerNotIsCreator}
         setUserName={props.setUserName}
     />
 }
