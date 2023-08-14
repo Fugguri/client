@@ -4,9 +4,9 @@ import { ColorContext } from '../context/colorcontext'
 import { useParams } from 'react-router-dom'
 import JoinGame from './joingame'
 import ChessGame from '../chess/ui/chessgame'
-const addRoom = require('../connection/socket').addRoom
+
 const socket = require('../connection/socket').socket
-const rooms = require('../connection/socket').rooms
+
 
 
 class CreateNewGame extends React.Component {
@@ -69,13 +69,9 @@ class CreateNewGame extends React.Component {
             gameId: newGameRoomId,
             didGetUserName: true
         })
-        // addRoom({ gameId: this.props.gameId, creator: this.props.userName })
 
         // emit an event to the server to create a new room 
         socket.emit('createNewGame', { gameId: newGameRoomId, creator: userName })
-        socket.emit('isGameExist', { gameId: this.props.gameId, userName: this.username })
-
-
     }
 
     typingColor = () => {
@@ -87,15 +83,12 @@ class CreateNewGame extends React.Component {
             color: typedText
         })
     }
-    join = () => {
-        console.log("join")
-        return this.state.join && !this.state.isAdmin
-    }
-    render() {
-        // !!! TODO: edit this later once you have bought your own domain. 
 
+    render() {
+        
+        // !!! TODO: edit this later once you have bought your own domain. 
         return (<React.Fragment>
-            {this.join() ?
+            {this.state.join && !this.state.isAdmin ?
                 <React.Fragment>
                     <JoinGame userName={this.props.userName} isCreator={false} />
                     <ChessGame myUserName={this.props.userName} />
