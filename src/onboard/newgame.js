@@ -73,7 +73,6 @@ class CreateNewGame extends React.Component {
 
         // emit an event to the server to create a new room 
         socket.emit('createNewGame', { gameId: newGameRoomId, creator: userName })
-        socket.emit('isGameExist', { gameId: this.props.gameId, userName: this.username })
 
 
     }
@@ -89,7 +88,10 @@ class CreateNewGame extends React.Component {
     }
     join = () => {
         console.log("join")
+        socket.emit('isGameExist', { gameId: this.props.gameId, userName: this.username })
+
         return this.state.join && !this.state.isAdmin
+
     }
     render() {
         // !!! TODO: edit this later once you have bought your own domain. 
