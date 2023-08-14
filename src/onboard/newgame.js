@@ -137,7 +137,7 @@ class CreateNewGame extends React.Component {
 }
 
 const NewGame = (props) => {
-
+    console.log('fds')
     const { gameid, username } = useParams()
     const color = React.useContext(ColorContext)
     return <CreateNewGame userName={username}
