@@ -5,7 +5,6 @@ import { ColorContext } from './context/colorcontext'
 import Onboard from './onboard/onboard'
 import JoinGame from './onboard/joingame'
 import ChessGame from './chess/ui/chessgame'
-import NewGame from './onboard/newgame';
 import './assets/styles/global.css'
 function App() {
 
@@ -28,17 +27,6 @@ function App() {
         <Switch>
           <Route path="/" exact>
             <Onboard setUserName={setUserName} />
-          </Route>
-
-          <Route path="/new/:gameid/:username(/:data)" exact>
-            {didRedirect ?
-              <React.Fragment>
-                <JoinGame userName={userName} isCreator={true} />
-                <ChessGame userName={userName} />
-              </React.Fragment>
-              :
-              <NewGame setUserName={setUserName} />
-            }
           </Route>
 
           <Route path="/game/:gameid" exact>
