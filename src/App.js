@@ -55,7 +55,7 @@ function App() {
               :
               <JoinRoom />}
           </Route>
-          <Redirect to="/" />
+          {/* <Redirect to="/" /> */}
 
         </Switch>
 
