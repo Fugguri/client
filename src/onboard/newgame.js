@@ -96,7 +96,7 @@ class CreateNewGame extends React.Component {
         // !!! TODO: edit this later once you have bought your own domain. 
 
         return (<React.Fragment>
-            {this.state.join && !this.state.isAdmin ?
+            {this.join() ?
                 <React.Fragment>
                     <JoinGame userName={this.props.userName} isCreator={false} />
                     <ChessGame myUserName={this.props.userName} />
