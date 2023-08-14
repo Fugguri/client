@@ -89,6 +89,8 @@ class CreateNewGame extends React.Component {
     join = () => {
         console.log("join")
         socket.emit('isGameExist', { gameId: this.props.gameId, userName: this.username })
+        console.log(this.state.join && !this.state.isAdmin)
+
         return this.state.join && !this.state.isAdmin
 
     }
