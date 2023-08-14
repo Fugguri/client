@@ -39,6 +39,7 @@ class CreateNewGame extends React.Component {
         socket.on('isGameExist', (data) => {
             console.log(data)
             if (data.isExist && data.creator !== undefined && data.creator != this.username) {
+                this.props.playerNotIsCreator
                 this.setState({
                     join: true,
                     isAdmin: false
@@ -89,7 +90,6 @@ class CreateNewGame extends React.Component {
     join = () => {
         console.log("join")
         socket.emit('isGameExist', { gameId: this.props.gameId, userName: this.username })
-    console.log(this.state.join && !this.state.isAdmin)
 
         return this.state.join && !this.state.isAdmin
 
@@ -99,10 +99,9 @@ class CreateNewGame extends React.Component {
 
         return (<React.Fragment>
             {this.join() ?
-                <React.Fragment>
-                    <JoinGame userName={this.props.userName} isCreator={false} />
-                    <ChessGame myUserName={this.props.userName} />
-                </React.Fragment> :
+                <Redirect to={"/new/" + this.state.gameId + "/" + this.state.username}>
+                    <button className="btn btn-success" style={{ marginLeft: String((window.innerWidth / 2) - 60) + "px", width: "120px" }}>Start Game</button>
+                </Redirect> :
                 this.state.didGetColor && this.state.isAdmin ?
                     <Redirect to={"/new/" + this.state.gameId + "/" + this.state.username}>
                         <button className="btn btn-success" style={{ marginLeft: String((window.innerWidth / 2) - 60) + "px", width: "120px" }}>Start Game</button>
@@ -124,6 +123,7 @@ class CreateNewGame extends React.Component {
                                     username: this.props.userName
                                 })
                                 this.props.didRedirect()
+                                this.props.playerIsCreator()
                                 this.props.setUserName(this.state.username)
                                 this.isCreator()
                                 this.setState({
@@ -146,6 +146,7 @@ const NewGame = (props) => {
     return <CreateNewGame userName={username}
         gameId={gameid}
         didRedirect={color.playerDidRedirect}
+        playerIsCreator={color.playerIsCreator}
         setUserName={props.setUserName}
     />
 }

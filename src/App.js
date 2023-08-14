@@ -11,9 +11,17 @@ import './assets/styles/global.css'
 function App() {
 
   const [didRedirect, setDidRedirect] = React.useState(false)
+  const [isCreator, setIsCreator] = React.useState(false)
 
   const playerDidRedirect = React.useCallback(() => {
     setDidRedirect(true)
+  }, [])
+
+  const playerIsCreator = React.useCallback(() => {
+    setIsCreator(true)
+  }, [])
+  const playerNotIsCreator = React.useCallback(() => {
+    setIsCreator(false)
   }, [])
 
   const playerDidNotRedirect = React.useCallback(() => {
@@ -23,7 +31,14 @@ function App() {
   const [userName, setUserName] = React.useState('')
 
   return (
-    <ColorContext.Provider value={{ didRedirect: didRedirect, playerDidRedirect: playerDidRedirect, playerDidNotRedirect: playerDidNotRedirect }}>
+    <ColorContext.Provider value={{
+      isCreator: isCreator,
+      playerIsCreator: playerIsCreator,
+      playerNotIsCreator: playerNotIsCreator,
+      didRedirect: didRedirect,
+      playerDidRedirect: playerDidRedirect,
+      playerDidNotRedirect: playerDidNotRedirect
+    }}>
       <Router>
 
         <Switch>
@@ -34,7 +49,7 @@ function App() {
           <Route path="/new/:gameid/:username" exact>
             {didRedirect ?
               <React.Fragment>
-                <JoinGame userName={userName} isCreator={true} />
+                <JoinGame userName={userName} isCreator={isCreator} />
                 <ChessGame userName={userName} />
               </React.Fragment>
               :
