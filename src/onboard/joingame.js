@@ -28,6 +28,7 @@ const JoinGameRoom = (gameid, userName, isCreator) => {
 
 
 const JoinGame = (props) => {
+    console.log(props)
     /**
      * Extract the 'gameId' from the URL. 
      * the 'gameId' is the gameRoom ID. 
