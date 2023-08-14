@@ -5,6 +5,7 @@ import { ColorContext } from './context/colorcontext'
 import Onboard from './onboard/onboard'
 import JoinGame from './onboard/joingame'
 import ChessGame from './chess/ui/chessgame'
+import NewGame from './onboard/newgame';
 import './assets/styles/global.css'
 function App() {
 
@@ -36,7 +37,7 @@ function App() {
                 <ChessGame userName={userName} />
               </React.Fragment>
               :
-              <NewGame setUserName={setUserName} activeRooms={activeRooms} setNewActiveRoom={setNewActiveRoom} rooms={rooms} />
+              <NewGame setUserName={setUserName} />
             }
 
           </Route>
