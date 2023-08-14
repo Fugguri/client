@@ -89,7 +89,6 @@ class CreateNewGame extends React.Component {
     join = () => {
         console.log("join")
         socket.emit('isGameExist', { gameId: this.props.gameId, userName: this.username })
-
         return this.state.join && !this.state.isAdmin
 
     }
@@ -97,7 +96,7 @@ class CreateNewGame extends React.Component {
         // !!! TODO: edit this later once you have bought your own domain. 
 
         return (<React.Fragment>
-            {this.join() ?
+            {this.state.join && !this.state.isAdmin ?
                 <React.Fragment>
                     <JoinGame userName={this.props.userName} isCreator={false} />
                     <ChessGame myUserName={this.props.userName} />
