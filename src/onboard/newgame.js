@@ -4,6 +4,8 @@ import { ColorContext } from '../context/colorcontext'
 import { useParams } from 'react-router-dom'
 import JoinGame from './joingame'
 import ChessGame from '../chess/ui/chessgame'
+
+
 const socket = require('../connection/socket').socket
 
 
@@ -87,7 +89,18 @@ class CreateNewGame extends React.Component {
     }
     join = () => {
         console.log("join")
-        return this.state.join && !this.state.isAdmin
+        // return this.state.join && !this.state.isAdmin
+        socket.emit('isGameExist', { gameId: this.props.gameId, userName: this.username })
+        socket.on('isGameExist', (data) => {
+            console.log(data)
+            if (data.isExist && data.creator !== undefined && data.creator != this.username) {
+                return true
+                this.setState({
+                    join: true,
+                    isAdmin: false
+                })
+            }
+        })
     }
     render() {
         // !!! TODO: edit this later once you have bought your own domain. 
@@ -135,7 +148,7 @@ class CreateNewGame extends React.Component {
 }
 
 const NewGame = (props) => {
-    console.log('fds')
+
     const { gameid, username } = useParams()
     const color = React.useContext(ColorContext)
     return <CreateNewGame userName={username}

@@ -2,6 +2,8 @@ import React from 'react'
 import { Redirect } from 'react-router-dom'
 import { v4 as uuid_v4 } from "uuid";
 import { ColorContext } from '../context/colorcontext'
+
+
 const socket = require('../connection/socket').socket
 
 /**
