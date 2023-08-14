@@ -39,7 +39,6 @@ function App() {
               :
               <NewGame setUserName={setUserName} />
             }
-
           </Route>
 
           <Route path="/game/:gameid" exact>

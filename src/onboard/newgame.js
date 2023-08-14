@@ -4,9 +4,7 @@ import { ColorContext } from '../context/colorcontext'
 import { useParams } from 'react-router-dom'
 import JoinGame from './joingame'
 import ChessGame from '../chess/ui/chessgame'
-const addRoom = require('../connection/socket').addRoom
 const socket = require('../connection/socket').socket
-const rooms = require('../connection/socket').rooms
 
 
 class CreateNewGame extends React.Component {
