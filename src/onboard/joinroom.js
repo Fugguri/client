@@ -8,7 +8,7 @@ import { useParams } from 'react-router-dom'
  * Onboard is where we create the game room.
  */
 
-class JoinRoo extends React.Component {
+class JoinRoom extends React.Component {
     state = {
         didGetUserName: false,
         inputText: ""
@@ -17,13 +17,7 @@ class JoinRoo extends React.Component {
     constructor(props) {
         super(props);
         this.textArea = React.createRef();
-        if (this.props.userName) {
-            this.setState({
-                didGetUserName: true,
-                inputText: this.props.userName
 
-            })
-        }
     }
 
     typingUserName = () => {
@@ -68,17 +62,6 @@ class JoinRoo extends React.Component {
             }
         </React.Fragment>)
     }
-}
-
-const JoinRoom = (props) => {
-
-    const { gameid, username } = useParams()
-    const color = React.useContext(ColorContext)
-    return <JoinRoo userName={username}
-        gameId={gameid}
-        didRedirect={color.playerDidRedirect}
-        setUserName={props.setUserName}
-    />
 }
 
 
