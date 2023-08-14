@@ -105,8 +105,8 @@ class CreateNewGame extends React.Component {
         return (<React.Fragment>
             {this.join() ?
                 <React.Fragment>
-                    <JoinGame userName={this.username} isCreator={false} />
-                    <ChessGame myUserName={this.username} />
+                    <JoinGame userName={this.props.userName} isCreator={false} />
+                    <ChessGame myUserName={this.props.userName} />
                 </React.Fragment> :
                 this.state.didGetColor && this.state.isAdmin ?
                     <Redirect to={"/new/" + this.state.gameId + "/" + this.state.username}>
