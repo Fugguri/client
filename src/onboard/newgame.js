@@ -95,11 +95,6 @@ class CreateNewGame extends React.Component {
                 isRoomExist: true
             })
         }
-        if (this.state.join && !this.state.isAdmin) {
-            this.props.didRedirect()
-            this.props.playerNotIsCreator()
-
-        }
 
         return this.state.join && !this.state.isAdmin
 
